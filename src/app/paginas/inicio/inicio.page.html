@@ -7,17 +7,37 @@
 
 
 <ion-content>
-
-  <ion-button   shape="round" routerLink="/login">
-    Iniciar Sesión
-  </ion-button>    
-  <ion-button   shape="round" routerLink="/signup">
-    Crear Usuario
-  </ion-button>
-  <ion-button expand="block" fill="clear">
-    Iniciar sin usuario
-  </ion-button>
+  <ion-row class="ion-justify-content-center">
+  <ion-col size="12">
+    <div class="ion-text-center">
+      
+      <ion-col size="6">
+        <ion-button shape="round" routerLink="/login" color="success" fill="outline">
+          Iniciar Sesión
+        </ion-button>
+      </ion-col>
+      
+      <ion-col size="6">    
+        <ion-button shape="round" routerLink="/signup" fill="outline">
+          Crear Usuario
+        </ion-button>
+      </ion-col>
+      
+    </div>
+      <ion-col>
+        <ion-button expand="block" fill="clear" size="small" color="medium">
+          Iniciar sin usuario
+        </ion-button>
+      </ion-col> 
+    
+  </ion-col>
+  </ion-row>
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>
 
 </ion-app>
