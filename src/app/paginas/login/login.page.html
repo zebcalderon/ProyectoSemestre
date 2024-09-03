@@ -6,9 +6,9 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
+    <!-- <ion-toolbar>
       <ion-title size="large">Iniciar Sesión</ion-title>
-    </ion-toolbar>
+    </ion-toolbar> -->
   </ion-header>
   <ion-row class="ion-justify-content-center">
     <ion-col size="8">
@@ -20,8 +20,18 @@
       <br>
       <ion-input label="Contraseña" label-placement="floating" fill="outline" placeholder="Ingresa una contraseña" [counter]="true" maxlength="20"></ion-input>
       <div class="ion-text-center">
-        <ion-button fill="outline" size="large" color="primary">Ingresar</ion-button>
-
+        <ion-col size="2">
+        </ion-col>
+        <ion-col size="3">
+          <ion-button fill="outline" color="success">Ingresar</ion-button>
+        </ion-col>
+        <ion-col size="2">
+        </ion-col>
+        <ion-col size="3">
+          <ion-button fill="outline" color="success">Segundo</ion-button>        
+        </ion-col>
+        <ion-col size="2">
+        </ion-col>
       </div>
 
     </ion-col>
