@@ -1,26 +1,29 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">signup</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="6">
+  <a routerLink="/login">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+  </a>
+  <ion-row class="ion-justify-content-center" style="padding-bottom: 50px;">
+    <ion-col size="8">
       <ion-text class="ion-text-center">
         <h1>Registrarse</h1>
       </ion-text>
       <br>
-      <ion-input label="Correo Electrónico" label-placement="floating" fill="outline" placeholder="Ingresa tu correo electrónico" style="width: 500px;"></ion-input>
+      <ion-input label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [counter]="true"></ion-input>
+      <br>
+      <br>
+      <ion-input label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [counter]="true" maxlength="20"></ion-input>
+      <br>
+      <ion-input label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa una contraseña" [counter]="true" maxlength="20"></ion-input>
+      <div class="ion-text-center">
+        <ion-button shape="round" fill="outline" color="success">Crear Cuenta</ion-button>
+      </div>
     </ion-col>
   </ion-row>
+  <ion-img src="assets/imagenes/fruit(1).png" style="height: 250px;"></ion-img>
 </ion-content>
 
 
-<br><br>
+
