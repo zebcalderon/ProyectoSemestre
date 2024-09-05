@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./paginas/signup/signup.module').then( m => m.SignupPageModule)
+  },  {
+    path: 'principal',
+    loadChildren: () => import('./paginas/principal/principal.module').then( m => m.PrincipalPageModule)
   },
+
 ];
 
 @NgModule({
