@@ -26,6 +26,14 @@ const routes: Routes = [
     path: 'principal',
     loadChildren: () => import('./paginas/principal/principal.module').then( m => m.PrincipalPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./paginas/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'comunidad',
+    loadChildren: () => import('./paginas/comunidad/comunidad.module').then( m => m.ComunidadPageModule)
+  },
 
 ];
 
