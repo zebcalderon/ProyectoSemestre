@@ -1,33 +1,82 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Calculadora de Macros</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="ion-padding">
-  <ion-item lines="full">
-    <ion-accordion-group>
-      <ion-accordion>
-        <ion-item slot="header">
-          <ion-label>Selecciona tu objetivo</ion-label>
-        </ion-item>
-        <ion-list slot="content">
-          <ion-radio-group [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange($event)">
-            <ion-item>
-              <ion-label>Ganar Masa Muscular</ion-label>
-              <ion-radio slot="start" value="ganar-masa"></ion-radio>
+  <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%;">
+    <ion-col size="12" size-md="8">
+      <ion-item lines="full" class="full-width">
+        <ion-accordion-group>
+          <!-- Primer Acordeón: Selecciona tu objetivo -->
+          <ion-accordion>
+            <ion-item slot="header">
+              <ion-label>Selecciona tu objetivo</ion-label>
             </ion-item>
-            <ion-item>
-              <ion-label>Bajar Peso</ion-label>
-              <ion-radio slot="start" value="bajar-peso"></ion-radio>
+            <ion-list slot="content">
+              <ion-radio-group [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange($event)">
+                <ion-item>
+                  <ion-label>Ganar Masa Muscular</ion-label>
+                  <ion-radio slot="start" value="ganar-masa"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Bajar Peso</ion-label>
+                  <ion-radio slot="start" value="bajar-peso"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Mantenerse</ion-label>
+                  <ion-radio slot="start" value="mantenerse"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-accordion>
+
+          <!-- Segundo Acordeón: Sexo -->
+          <ion-accordion #secondAccordion>
+            <ion-item slot="header">
+              <ion-label>Sexo</ion-label>
             </ion-item>
-            <ion-item>
-              <ion-label>Mantenerse</ion-label>
-              <ion-radio slot="start" value="mantenerse"></ion-radio>
+            <ion-list slot="content">
+              <ion-radio-group [(ngModel)]="selectedSex" (ngModelChange)="onSexChange($event)">
+                <ion-item>
+                  <ion-label>Hombre</ion-label>
+                  <ion-radio slot="start" value="hombre"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Mujer</ion-label>
+                  <ion-radio slot="start" value="mujer"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-accordion>
+
+          <!-- Tercer Acordeón: Nivel de Actividad Física -->
+          <ion-accordion>
+            <ion-item slot="header">
+              <ion-label>Nivel de Actividad Física</ion-label>
             </ion-item>
-          </ion-radio-group>
-        </ion-list>
-      </ion-accordion>
-    </ion-accordion-group>
-  </ion-item>
+            <ion-list slot="content">
+              <ion-radio-group [(ngModel)]="selectedActivityLevel" (ngModelChange)="onActivityLevelChange($event)">
+                <ion-item>
+                  <ion-label>Sedentario</ion-label>
+                  <ion-radio slot="start" value="sedentario"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Actividad Baja</ion-label>
+                  <ion-radio slot="start" value="actividad-baja"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Actividad Intermedia</ion-label>
+                  <ion-radio slot="start" value="actividad-intermedia"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Actividad Alta</ion-label>
+                  <ion-radio slot="start" value="actividad-alta"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Actividad Muy Alta</ion-label>
+                  <ion-radio slot="start" value="actividad-muy-alta"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 </ion-content>

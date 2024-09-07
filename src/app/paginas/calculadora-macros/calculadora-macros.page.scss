@@ -1,0 +1,22 @@
+.full-width {
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-end: 0;
+  }
+  
+  ion-accordion-group {
+    width: 100%;
+  }
+  
+  ion-item[lines="full"] {
+    --inner-padding-start: 0;
+    --inner-padding-end: 0;
+  }
+  
+  ion-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
