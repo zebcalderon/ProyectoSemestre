@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Calculadora de Macros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item lines="full">
+    <ion-accordion-group>
+      <ion-accordion>
+        <ion-item slot="header">
+          <ion-label>Selecciona tu objetivo</ion-label>
+        </ion-item>
+        <ion-list slot="content">
+          <ion-radio-group [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange($event)">
+            <ion-item>
+              <ion-label>Ganar Masa Muscular</ion-label>
+              <ion-radio slot="start" value="ganar-masa"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Bajar Peso</ion-label>
+              <ion-radio slot="start" value="bajar-peso"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Mantenerse</ion-label>
+              <ion-radio slot="start" value="mantenerse"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-item>
+</ion-content>
