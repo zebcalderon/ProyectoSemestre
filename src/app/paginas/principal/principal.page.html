@@ -13,16 +13,56 @@
     <ion-row>
       <ion-col></ion-col>
       <ion-col>
-        <ion-button  fill="clear" shape="round" class="boton_cc" expand="block">
-          Calcular Calorias
-        </ion-button>
+        <ion-button id="open-modal" class="boton_cc" fill="clear" shape="round" expand="block">
+          Contador de Calorias</ion-button>
+
+        <ion-modal trigger="open-modal">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Contador</ion-title>
+                <ion-buttons slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear">
+                  Cancelar
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content>
+              <ion-input type="text" placeholder="Edad" fill="solid" maxlength="2" class="boton"></ion-input>
+              <br>
+              <ion-input type="text" placeholder="Altura (cm)" fill="solid" maxlength="3" class="boton"></ion-input>
+              <br>
+              <ion-list>
+                <ion-item expand="block" style="color: orange;">
+                  <ion-select placeholder="Sexo" >
+                    <ion-select-option value="Hombre">Hombre</ion-select-option>
+                    <ion-select-option value="Mujer">Mujer</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+              <br>
+              <ion-input type="text" placeholder="Peso (kg)" fill="solid" maxlength="3" class="boton"></ion-input>
+              <br>
+              <ion-list>
+                <ion-item expand="block" style="color: orange;">
+                  <ion-select placeholder="Ejercicio">
+                    <ion-select-option value="Opc1">Opc1</ion-select-option>
+                    <ion-select-option value="Opc2">Opc2</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+              <ion-button expand="block" fill="clear" shape="round" class="boton">
+                Calcular
+              </ion-button>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <br>
   <br>
-  <ion-img src="assets/imagenes/fruit(1).png" style="height: 250px;"></ion-img>
+  <ion-img src="assets/imagenes/grafico-de-torta.png" style="height: 250px;"></ion-img>
   <br>
   <br>
 
