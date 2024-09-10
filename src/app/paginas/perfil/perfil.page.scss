@@ -83,7 +83,15 @@
     width: 60px;
     height: auto;
     display: flex;
+}
 
+.puntaje {
+    bottom: 10px;
+    right: 20px;
+    position: absolute;
+    display: flex;
+    border-radius: 30px;
+    background-color: rgba(35, 35, 41, 0.8)
 }
 
 .transparente {
@@ -94,6 +102,7 @@
     height: auto;
     width: 100%;
     object-fit: cover;
+    position: relative; 
 }
 
 .foto-publicacion {
