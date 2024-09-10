@@ -53,10 +53,11 @@
           <ion-text>
             <!-- AQUÍ HAY QUE INGRESAR EL NOMBRE DEL USUARIO DEL PERFÍL Y SU ÍCONO DE PERFÍL -->
             <a href="perfil" class="sin-estilo">
-              <h5><i class="icono mini-perfil"></i>             
-                Gallo Gallar</h5> 
-            </a>
-            
+              <h5>
+                <i class="icono mini-perfil"></i>
+                {{ usuario?.nombre || "Invitado" }} <!-- Muestra 'Invitado' si el nombre no está disponible -->
+              </h5>
+            </a>            
           </ion-text>
           <ion-text>
             <a href="" class="sin-estilo">

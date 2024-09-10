@@ -35,8 +35,17 @@ export class SignupPage implements OnInit {
   }
 
   onRegister() {
-    if (Object.keys(this.validateFields()).length === 0) {
-      console.log('Registro exitoso');
+    if (!this.nombre || !this.correo || !this.password) {
+      this.errors = 'Todos los campos son obligatorios.';
+      return;
     }
+
+    const usuario = {
+      nombre:this.nombre,
+      correo:this.correo,
+      password:this.password
+    }
+    localStorage.setItem("usuario",JSON.stringify(usuario))
+    console.log("Registro exitoso")
   }
 }

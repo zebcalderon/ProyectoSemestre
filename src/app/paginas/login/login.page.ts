@@ -42,9 +42,20 @@ export class LoginPage implements OnInit {
   onLogin() {
     this.validateNombre();
     this.validatePassword();
-
+  
     if (!this.nombreError && !this.passwordError) {
-      console.log('Inicio de sesión exitoso');
+      const usuarioGuardado = localStorage.getItem('usuario');
+      if (usuarioGuardado) {
+        const usuario = JSON.parse(usuarioGuardado);
+  
+        if (usuario.nombre === this.nombre && usuario.password === this.password) {
+          console.log('Inicio de sesión exitoso');
+        } else {
+          console.log('Nombre o contraseña incorrectos');
+        }
+      } else {
+        console.log('No hay usuarios registrados');
+      }
     } else {
       console.log('Errores:', this.nombreError, this.passwordError);
     }
