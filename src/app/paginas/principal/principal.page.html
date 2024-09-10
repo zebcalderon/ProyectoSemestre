@@ -82,13 +82,17 @@
 
   <ion-modal #modalContador trigger="open-modal">
     <ng-template>
+      <div class="main-container">
+        <div class="center-container-hor" >
+          <ion-toolbar>
+            <button slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear" style="align-items: center; width: 200px;">
+              Cancelar
+            </button>
+          </ion-toolbar>
+        </div>
+      </div>
       <ion-header>
-        <ion-toolbar>
-          <ion-title>Contador de Calorias</ion-title>
-          <ion-buttons slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear">
-            Cancelar
-          </ion-buttons>
-        </ion-toolbar>
+        
       </ion-header>
       <ion-content>
         <ion-input type="text" placeholder="Edad" fill="solid" maxlength="2" class="boton"></ion-input>
@@ -109,11 +113,11 @@
         <ion-list>
           <ion-item expand="block" style="color: orange;">
             <ion-select placeholder="Ejercicio">
-              <ion-select-option value="Opc1">Nunca</ion-select-option>
-              <ion-select-option value="Opc2">A veces</ion-select-option>
-              <ion-select-option value="Opc3">Frecuentemente</ion-select-option>
-              <ion-select-option value="Opc4">Siempre</ion-select-option>
-              <ion-select-option value="Opc5">Ejercicio Intenso</ion-select-option>
+              <ion-select-option value="Opc1">Poco o ningún ejercicio</ion-select-option>
+              <ion-select-option value="Opc2">Ejercicio ligero</ion-select-option>
+              <ion-select-option value="Opc3">Ejercicio moderado</ion-select-option>
+              <ion-select-option value="Opc4">Ejercicio Fuerte</ion-select-option>
+              <ion-select-option value="Opc5">Ejercicio Muy Fuerte (dos veces al día)</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
