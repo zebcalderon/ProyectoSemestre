@@ -77,14 +77,22 @@
     width: 40px;
 }
 .editar {
-    position: relative;
+    position: absolute;
     top: 10%;
-    left: 35%;
+    left: 85%;
     width: 60px;
     height: auto;
     display: flex;
 }
 
+.configuraciones {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 60px;
+    height: auto;
+    display: flex;
+}
 
 // PERFÍL
 .puntaje {
