@@ -1,14 +1,11 @@
 .main-container {
     display: flex;
-    flex-direction: column; /* Stacks the items vertically */
-    // justify-content: center; /* Centers the content horizontally */
-    // align-items: center; /* Centers the content vertically, optional */
-    // width: 90%; /* Adjust width as needed */
-    max-width: 600px; /* Limits the maximum width */
-    margin: 0 auto; /* Ensures the container is centered horizontally */
-    height: auto; /* Adjust height as needed */
-    // padding: 20px; /* Optional padding */
-    // box-sizing: border-box; /* Ensures padding is included in width and height */
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    height: auto;
+    padding: 20px; /* Opcional, para darle un poco de espacio interno */
+    box-sizing: border-box;
 }
 
 .center-container {
@@ -25,17 +22,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    // height: 45vh;
     width: 100%;
 }
 
-.container-fluid {
+.container-fluid, .container {
     width: 100%;
-    height: auto;
-}
-
-.container {
-    width: auto;
     height: auto;
 }
 
@@ -48,60 +39,60 @@
 
 .texto-perfil {
     margin-top: 20px;
-    width: 80%; 
+    width: 80%;
     max-width: 700px;
+    text-align: center; /* Asegura que el texto esté centrado */
 }
 
 .icono {
     display: inline-block;
     background-size: contain;
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat;
     vertical-align: middle;
 }
 
 .estrella {
     background-image: url("/assets/icon/star64.png");
-    height: 45px; 
+    height: 45px;
     width: 45px;
 }
 
 .guardar {
     background-image: url("/assets/icon/guardar-128.png");
-    height: 50px; 
+    height: 50px;
     width: 50px;
 }
 
-.mini-perfil{
+.mini-perfil {
     background-image: url("/assets/icon/chicken64.png");
     height: 40px;
     width: 40px;
 }
-.editar {
+
+.editar, .configuraciones {
     position: absolute;
-    top: 10%;
-    left: 85%;
     width: 60px;
     height: auto;
     display: flex;
+}
+
+.editar {
+    top: 10%;
+    left: 85%;
 }
 
 .configuraciones {
-    position: absolute;
     top: 10%;
     left: 0;
-    width: 60px;
-    height: auto;
-    display: flex;
 }
 
-// PERFÍL
 .puntaje {
     bottom: 10px;
     right: 20px;
     position: absolute;
     display: flex;
     border-radius: 30px;
-    background-color: rgba(35, 35, 41, 0.8)
+    background-color: rgba(35, 35, 41, 0.8);
 }
 
 .transparente {
@@ -112,7 +103,7 @@
     height: auto;
     width: 100%;
     object-fit: cover;
-    position: relative; 
+    position: relative;
 }
 
 .foto-publicacion {
@@ -121,4 +112,32 @@
     object-fit: cover;
     border-radius: 30px;
 }
-// PERFIL
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .center-container, .center-container-hor {
+        height: auto; /* Ajusta la altura para pantallas pequeñas */
+    }
+
+    .img-perfil {
+        max-height: 25vh; /* Ajusta el tamaño máximo para pantallas pequeñas */
+    }
+
+    .texto-perfil {
+        font-size: 24px; /* Reduce el tamaño del texto para pantallas más pequeñas */
+        width: 90%;
+    }
+
+    .editar, .configuraciones {
+        top: 5%;
+        width: 50px;
+    }
+
+    .publicacion {
+        margin-bottom: 20px; /* Asegura que las publicaciones tengan un buen espaciado */
+    }
+
+    .foto-publicacion {
+        height: 200px; /* Ajusta el tamaño de la imagen en pantallas pequeñas */
+    }
+}

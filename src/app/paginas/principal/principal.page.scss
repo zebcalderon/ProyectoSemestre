@@ -1,4 +1,4 @@
-.boton{
+.boton {
     color: orange;
     border-radius: 10px;
     text-align: center;
@@ -6,25 +6,116 @@
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 17px;
+    margin-bottom: 10px;
 }
 
-.boton_cc{
+.boton_cc {
     color: red;
     border-radius: 10px;
     text-align: center;
     background-color: orange;
     font-size: 17px;
+    margin-bottom: 10px; 
 }
 
-.boton_cancelar{
+.boton_cancelar {
     color: white;
     border-radius: 10px;
     text-align: center;
     background-color: red;
     font-size: 17px;
+    margin-bottom: 10px;
 }
 
-.grafico{
-    width: 250px;
-    height: 250px;
+.grafico {
+    width: 100%;
+    max-width: 250px; 
+    height: auto; 
+    margin: auto; 
+}
+
+.ion-img {
+    display: block;
+    margin: 0 auto; 
+}
+
+
+.ion-grid {
+    padding: 0 16px;
+}
+
+.ion-row {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    margin-bottom: 10px; 
+}
+
+.ion-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; 
+    margin-bottom: 10px; 
+}
+
+
+@media (max-width: 576px) {
+    .boton, .boton_cc {
+        font-size: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 100%; 
+    }
+
+    .boton_cancelar {
+        font-size: 15px; 
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 100%;
+    }
+
+    .grafico {
+        max-width: 200px; 
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .boton, .boton_cc {
+        font-size: 16px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        width: 100%; 
+    }
+
+    .boton_cancelar {
+        font-size: 16px; 
+        padding-top: 18px;
+        padding-bottom: 18px;
+        width: 100%;
+    }
+
+    .grafico {
+        max-width: 225px; 
+    }
+}
+
+@media (min-width: 769px) {
+    .boton, .boton_cc {
+        font-size: 17px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: auto; 
+    }
+
+    .boton_cancelar {
+        font-size: 17px; 
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: auto; 
+    }
+
+    .grafico {
+        max-width: 250px; 
+    }
 }
