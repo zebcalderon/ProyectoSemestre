@@ -1,6 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>publicacion</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/comunidad"></ion-back-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
@@ -11,13 +13,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="main-container" style="margin-top: 30px;">
-    <div class="center-container" style="background-color: black; height: auto;">
-      <!-- QUIÉN PUBLICÓ -->
-      <ion-row>
+  <div class="main-container">
+    <div class="center-container" style="height: auto;">
+      <!-- TITULO DE RECETA -->
+      <ion-row style="width: 80%;">
         <ion-col size="12">
-          <h5><i class="icono mini-perfil"></i>             
-            Gallo Gallar</h5> 
+          <ion-text >
+            <h1 style="text-align: start; font-weight: 600;">Gohan Casero</h1>
+          </ion-text>
         </ion-col>
       </ion-row>
       <!-- FOTO DE RECETA -->
@@ -26,32 +29,40 @@
           <img class="foto-publicacion-pag" src="assets/imagenes/comida1.jpg" alt="">
         </ion-col>
       </ion-row>
-      <!-- TITULO DE RECETA -->
+      <!-- QUIÉN PUBLICÓ -->
       <ion-row style="width: 80%;">
         <ion-col size="12">
-          <ion-text >
-            <h1 style="margin-top: 0px; text-align: start;">Gohan Casero</h1>
-          </ion-text>
+          <h5 style="text-align: end; margin-top: 0;"><i class="icono mini-perfil"></i>             
+            Gallo Gallar</h5> 
         </ion-col>
       </ion-row>
       <!-- INGREDIENTES DE RECETA -->
-       <ion-row>
+       <ion-row style="width: 80%">
         <ion-col size="12">
           <ion-text color="primary">
-            <h1 >Ingredientes:</h1>
+            <h1 class="center-align">Ingredientes:</h1>
           </ion-text>
           <ion-text>
-            <h3>• 1kg de Pollo</h3>
-            <h3>• 1 Pimentón</h3>
-            <h3>• 1/4 de Lechuga</h3>
-            <h3>• 2 tazas de Arroz</h3>
-            <h3>• 300g Camarones</h3>
+            <h3 class="left-align">• 1kg de Pollo</h3>
+            <h3 class="left-align">• 1 Pimentón</h3>
+            <h3 class="left-align">• 1/4 de Lechuga</h3>
+            <h3 class="left-align">• 2 tazas de Arroz</h3>
+            <h3 class="left-align">• 300g Camarones</h3>
           </ion-text>
         </ion-col>
        </ion-row>
       <!-- PASOS DE RECETA -->
-       <ion-row>
-        <ion-col size="12"></ion-col>
+       <ion-row style="width: 85%;">
+        <ion-col size="12">
+          <ion-text color="primary">
+            <h1 class="center-align">Instrucciones:</h1>
+          </ion-text>
+          <ion-text>
+            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, qui alias ipsa ipsam asperiores rerum quae. Praesentium esse ipsam inventore.</h1>
+            <br>
+            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus quaerat corporis nisi repellat voluptatum suscipit.</h1>
+          </ion-text>
+        </ion-col>
        </ion-row>
     </div>
   </div>
