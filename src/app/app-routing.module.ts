@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'prueba',
     loadChildren: () => import('./paginas/prueba/prueba.module').then( m => m.PruebaPageModule)
   },
+  {
+    path: 'publicacion',
+    loadChildren: () => import('./paginas/publicacion/publicacion.module').then( m => m.PublicacionPageModule)
+  },
 
 
 ];
