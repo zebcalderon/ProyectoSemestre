@@ -1,22 +1,47 @@
 .full-width {
-    --padding-start: 0;
-    --padding-end: 0;
-    --inner-padding-start: 0;
-    --inner-padding-end: 0;
-  }
-  
-  ion-accordion-group {
-    width: 100%;
-  }
-  
-  ion-item[lines="full"] {
-    --inner-padding-start: 0;
-    --inner-padding-end: 0;
-  }
-  
-  ion-item {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+ion-item[lines="full"] {
+  --inner-padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+ion-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.accordion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; // Espacio entre acordeones y campos de entrada
+}
+
+.accordion-item {
+  margin-bottom: 0; // Asegura que no haya margen extra debajo de los acordeones
+}
+
+.input-item {
+  margin-bottom: 15px; // Espacio entre los campos de entrada y el acordeón
+}
+
+ion-accordion-group {
+  width: 100%;
+}
+
+ion-input {
+  width: 100%;
+}
+
+ion-label {
+  width: 100%;
+}
+
+input[type="number"] {
+  width: 100%;
+}

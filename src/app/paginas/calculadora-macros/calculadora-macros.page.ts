@@ -1,34 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-calculadora-macros',
   templateUrl: './calculadora-macros.page.html',
   styleUrls: ['./calculadora-macros.page.scss'],
 })
-export class CalculadoraMacrosPage implements OnInit {
-  selectedOption: string | null = null;
-  selectedSex: string | null = null;
-  selectedActivityLevel: string | null = null;
+export class CalculadoraMacrosPage {
+  edad: number | null = null;
+  altura: number | null = null;
+  selectedOption: string | null = "";
+  selectedSex: string | null = "";
+  selectedActivityLevel: string | null = "";
 
-  constructor() { }
-
-  ngOnInit() { }
-
-  // Maneja el cambio de opción en el acordeón "Selecciona tu objetivo"
-  onOptionChange(value: string) {
-    this.selectedOption = value;
-    // Aquí puedes agregar lógica adicional si es necesario
+  onEdadChange(event: any) {
+    this.edad = event.target.value ? parseInt(event.target.value, 10) : null;
   }
 
-  // Maneja el cambio de opción en el acordeón "Sexo"
-  onSexChange(value: string) {
-    this.selectedSex = value;
-    // Aquí puedes agregar lógica adicional si es necesario
+  onAlturaChange(event: any) {
+    this.altura = event.target.value ? parseInt(event.target.value, 10) : null;
   }
 
-  // Maneja el cambio de opción en el acordeón "Nivel de Actividad Física"
-  onActivityLevelChange(value: string) {
-    this.selectedActivityLevel = value;
-    // Aquí puedes agregar lógica adicional si es necesario
+  onOptionChange(event: any) {
+    this.selectedOption = event;
+  }
+
+  onSexChange(event: any) {
+    this.selectedSex = event;
+  }
+
+  onActivityLevelChange(event: any) {
+    this.selectedActivityLevel = event;
   }
 }

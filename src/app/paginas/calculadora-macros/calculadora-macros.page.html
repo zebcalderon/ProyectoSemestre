@@ -2,9 +2,9 @@
   <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%;">
     <ion-col size="12" size-md="8">
       <ion-item lines="full" class="full-width">
-        <ion-accordion-group>
-          <!-- Primer Acordeón: Selecciona tu objetivo -->
-          <ion-accordion>
+        <ion-accordion-group class="accordion-group">
+          <!-- Primer acordeón -->
+          <ion-accordion class="accordion-item">
             <ion-item slot="header">
               <ion-label>Selecciona tu objetivo</ion-label>
             </ion-item>
@@ -26,8 +26,19 @@
             </ion-list>
           </ion-accordion>
 
-          <!-- Segundo Acordeón: Sexo -->
-          <ion-accordion #secondAccordion>
+          <!-- Campos de edad y altura -->
+          <ion-item lines="full" class="full-width input-item">
+            <ion-label position="floating"></ion-label>
+            <ion-input type="number" [(ngModel)]="edad" min="0" max="120" placeholder="Ingrese su edad" [attr.aria-label]="'Edad'" fill="solid" label="Edad" label-placement="floating"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full" class="full-width input-item">
+            <ion-label position="floating"></ion-label>
+            <ion-input type="number" [(ngModel)]="altura" min="120" max="250" placeholder="Ingrese su altura" [attr.aria-label]="'Altura'" fill="solid" label="Altura" label-placement="floating"></ion-input>
+          </ion-item>
+
+          <!-- Segundo acordeón -->
+          <ion-accordion class="accordion-item">
             <ion-item slot="header">
               <ion-label>Sexo</ion-label>
             </ion-item>
@@ -45,8 +56,8 @@
             </ion-list>
           </ion-accordion>
 
-          <!-- Tercer Acordeón: Nivel de Actividad Física -->
-          <ion-accordion>
+          <!-- Tercer acordeón -->
+          <ion-accordion class="accordion-item">
             <ion-item slot="header">
               <ion-label>Nivel de Actividad Física</ion-label>
             </ion-item>
