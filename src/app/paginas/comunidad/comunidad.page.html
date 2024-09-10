@@ -1,13 +1,42 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>comunidad</ion-title>
+    <ion-title>Comunidad</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">comunidad</ion-title>
+      <ion-title size="large">Comunidad</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-content class="ion-padding">
+    <!-- Botones para subir recetas y entrenamientos -->
+    <ion-button expand="full" class="upload-button" (click)="uploadReceta()">
+      Subir Receta
+    </ion-button>
+    <ion-button expand="full" class="upload-button" (click)="uploadEntrenamiento()">
+      Subir Entrenamiento
+    </ion-button>
+
+    <!-- Tarjetas para recetas y entrenamientos -->
+    <ion-card class="upload-card">
+      <ion-card-header>
+        <ion-card-title>Recetas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Contenido de la tarjeta de recetas -->
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="upload-card">
+      <ion-card-header>
+        <ion-card-title>Entrenamientos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Contenido de la tarjeta de entrenamientos -->
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
 </ion-content>

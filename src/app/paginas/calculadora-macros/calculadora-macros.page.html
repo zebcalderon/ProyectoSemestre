@@ -1,0 +1,93 @@
+<ion-content class="ion-padding">
+  <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%;">
+    <ion-col size="12" size-md="8">
+      <ion-item lines="full" class="full-width">
+        <ion-accordion-group class="accordion-group">
+          <!-- Primer acordeón -->
+          <ion-accordion class="accordion-item">
+            <ion-item slot="header">
+              <ion-label>Selecciona tu objetivo</ion-label>
+            </ion-item>
+            <ion-list slot="content">
+              <ion-radio-group [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange($event)">
+                <ion-item>
+                  <ion-label>Ganar Masa Muscular</ion-label>
+                  <ion-radio slot="start" value="ganar-masa"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Bajar Peso</ion-label>
+                  <ion-radio slot="start" value="bajar-peso"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Mantenerse</ion-label>
+                  <ion-radio slot="start" value="mantenerse"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-accordion>
+
+          <!-- Campos de edad y altura -->
+          <ion-item lines="full" class="full-width input-item">
+            <ion-label position="floating"></ion-label>
+            <ion-input type="number" [(ngModel)]="edad" min="0" max="120" placeholder="Ingrese su edad" [attr.aria-label]="'Edad'" fill="solid" label="Edad" label-placement="floating"></ion-input>
+          </ion-item>
+
+          <ion-item lines="full" class="full-width input-item">
+            <ion-label position="floating"></ion-label>
+            <ion-input type="number" [(ngModel)]="altura" min="120" max="250" placeholder="Ingrese su altura" [attr.aria-label]="'Altura'" fill="solid" label="Altura" label-placement="floating"></ion-input>
+          </ion-item>
+
+          <!-- Segundo acordeón -->
+          <ion-accordion class="accordion-item">
+            <ion-item slot="header">
+              <ion-label>Sexo</ion-label>
+            </ion-item>
+            <ion-list slot="content">
+              <ion-radio-group [(ngModel)]="selectedSex" (ngModelChange)="onSexChange($event)">
+                <ion-item>
+                  <ion-label>Hombre</ion-label>
+                  <ion-radio slot="start" value="hombre"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Mujer</ion-label>
+                  <ion-radio slot="start" value="mujer"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-accordion>
+
+          <!-- Tercer acordeón -->
+          <ion-accordion class="accordion-item">
+            <ion-item slot="header">
+              <ion-label>Nivel de Actividad Física</ion-label>
+            </ion-item>
+            <ion-list slot="content">
+              <ion-radio-group [(ngModel)]="selectedActivityLevel" (ngModelChange)="onActivityLevelChange($event)">
+                <ion-item>
+                  <ion-label>Sedentario</ion-label>
+                  <ion-radio slot="start" value="sedentario"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Actividad Baja</ion-label>
+                  <ion-radio slot="start" value="actividad-baja"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Actividad Intermedia</ion-label>
+                  <ion-radio slot="start" value="actividad-intermedia"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Actividad Alta</ion-label>
+                  <ion-radio slot="start" value="actividad-alta"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Actividad Muy Alta</ion-label>
+                  <ion-radio slot="start" value="actividad-muy-alta"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-content>

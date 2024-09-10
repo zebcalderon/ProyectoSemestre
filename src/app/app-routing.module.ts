@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./paginas/signup/signup.module').then( m => m.SignupPageModule)
-  },  {
+  },
+  {
     path: 'principal',
     loadChildren: () => import('./paginas/principal/principal.module').then( m => m.PrincipalPageModule)
   },
@@ -33,6 +34,11 @@ const routes: Routes = [
   {
     path: 'comunidad',
     loadChildren: () => import('./paginas/comunidad/comunidad.module').then( m => m.ComunidadPageModule)
+  },
+
+  {
+    path: 'calculadora-macros',
+    loadChildren: () => import('./paginas/calculadora-macros/calculadora-macros.module').then( m => m.CalculadoraMacrosPageModule)
   },
 
 ];

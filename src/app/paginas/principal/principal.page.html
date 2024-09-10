@@ -16,11 +16,11 @@
         <ion-button id="open-modal" class="boton_cc" fill="clear" shape="round" expand="block">
           Contador de Calorias</ion-button>
 
-        <ion-modal trigger="open-modal">
+        <ion-modal #modalContador trigger="open-modal">
           <ng-template>
             <ion-header>
               <ion-toolbar>
-                <ion-title>Contador</ion-title>
+                <ion-title>Contador de Calorias</ion-title>
                 <ion-buttons slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear">
                   Cancelar
                 </ion-buttons>
@@ -69,24 +69,52 @@
   <ion-grid>
     <ion-row>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6">
-        <ion-button  fill="clear" shape="round" class="boton" expand="block">
+        <ion-button  fill="clear" shape="round" class="boton" expand="block" id="open-calorias">
           Calorias
         </ion-button>
+        <ion-modal #modalCalorias trigger="open-calorias">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Calorias</ion-title>
+                <ion-buttons slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear">
+                  Cancelar
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content>
+              <ion-list>
+                <ion-item>
+                  <ion-label>Diario</ion-label>
+                  <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Semanal</ion-label>
+                  <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Mensual</ion-label>
+                  <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
       </ion-col>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6">
-        <ion-button  fill="clear" shape="round" class="boton" expand="block">
+        <ion-button  fill="clear" shape="round" class="boton" expand="block" id="open-entrena">
           Entrenamientos
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6">
-        <ion-button  fill="clear" shape="round" class="boton" expand="block">
+        <ion-button  fill="clear" shape="round" class="boton" expand="block" id="open-pasos">
           Pasos
         </ion-button>
       </ion-col>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="6">
-        <ion-button  fill="clear" shape="round" class="boton" expand="block">
+        <ion-button  fill="clear" shape="round" class="boton" expand="block" id="open-km">
           Km
         </ion-button>
       </ion-col>
@@ -97,4 +125,93 @@
 
 
 
+  
+  <ion-modal #modalEntrenamientos trigger="open-entrena">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Entrenamientos</ion-title>
+          <ion-buttons slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear">
+            Cancelar
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Diario</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+          <ion-item>
+            <ion-label>Semanal</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+          <ion-item>
+            <ion-label>Mensual</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  
+  <ion-modal #modalPasos trigger="open-pasos">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Pasos</ion-title>
+          <ion-buttons slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear">
+            Cancelar
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Diario</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+          <ion-item>
+            <ion-label>Semanal</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+          <ion-item>
+            <ion-label>Mensual</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  
+  <ion-modal #modalKm trigger="open-km">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Km</ion-title>
+          <ion-buttons slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear">
+            Cancelar
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>Diario</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+          <ion-item>
+            <ion-label>Semanal</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+          <ion-item>
+            <ion-label>Mensual</ion-label>
+            <ion-img src="assets/imagenes/grafico-de-barras.png" class="grafico"></ion-img>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 </ion-content>
+
