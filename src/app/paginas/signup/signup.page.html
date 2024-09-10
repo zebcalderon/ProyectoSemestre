@@ -24,7 +24,7 @@
       </div>
       <br>
       <ion-input 
-        type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa una contraseña" [(ngModel)]="password" (ionBlur)="validateFields()" [counter]="true" minlength="8" maxlength="20">
+        type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa  una contraseña" [(ngModel)]="password" (ionBlur)="validateFields()" [counter]="true" minlength="8" maxlength="20">
       </ion-input>
       <div *ngIf="errors.passwordError" class="ion-text-center">
         <small>{{ errors.passwordError }}</small>
