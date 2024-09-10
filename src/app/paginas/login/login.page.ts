@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
 
 
   validatePassword() {
-    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&-/])[A-Za-z\d@$!%*?&]{8,20}$/;
     this.passwordError =
       !this.password
         ? 'La contraseña es requerida.'
