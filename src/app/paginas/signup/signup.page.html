@@ -11,12 +11,12 @@
         <h1>Registrarse</h1>
       </ion-text>
       <br>
-      <ion-input label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [counter]="true"></ion-input>
+      <ion-input label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu correo1" [counter]="true"></ion-input>
       <br>
       <br>
       <ion-input label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [counter]="true" maxlength="20"></ion-input>
       <br>
-      <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa una contraseña" [counter]="true" maxlength="20"></ion-input>
+      <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa una contraseña" [counter]="true" minlength="8" maxlength="20"></ion-input>
       <div class="ion-text-center">
         <ion-button shape="round" fill="outline" color="success">Crear Cuenta</ion-button>
       </div>
