@@ -39,7 +39,11 @@ const routes: Routes = [
   {
     path: 'calculadora-macros',
     loadChildren: () => import('./paginas/calculadora-macros/calculadora-macros.module').then( m => m.CalculadoraMacrosPageModule)
+  },  {
+    path: 'prueba',
+    loadChildren: () => import('./paginas/prueba/prueba.module').then( m => m.PruebaPageModule)
   },
+
 
 ];
 

@@ -19,7 +19,7 @@ export class SignupPage implements OnInit {
     this.errors = {};
 
     if (!this.correo.includes('@') || !this.correo.includes('.')) {
-      this.errors.correoError = 'Correo electronico invalido';
+      this.errors.correoError = 'Correo electronico inválido';
     }
 
     if (this.nombre.length < 3 || this.nombre.length > 30) {
