@@ -7,16 +7,26 @@
 <ion-content [fullscreen]="true">
   <div class="main-container">
     <div class="center-container">
-      <div class="container" style="width: 500px; height: 500px; background-color: rgb(93, 93, 93); border-radius: 30px;">
+      <div class="container" style="min-width: 300px; min-height: 300px; background-color: rgb(26, 26, 26); border-radius: 30px; position: relative; align-items: center; display: flex; justify-content: center;">
         <ion-row>
           <ion-col size="12">
-            <button class="transparente">
-            <img src="assets/icon/generative-image-256.png" alt="">
+            <button class="transparente" style="top: 50%; left: 50%;">
+            <img src="assets/imagenes/camara.png" alt="" style="height: 200px; width: auto;">
             </button>
           </ion-col>
         </ion-row>
-        
       </div>
+      
+      <ion-input type="text" label="Título" label-placement="floating" fill="solid" placeholder="Escribe el título de tu receta" style="margin-top: 30px; max-width: 80%;">
+      </ion-input>
+
+      <ion-text>
+        <h1>Ingredientes</h1>
+      </ion-text>
+      <input type="checkbox" name="" id="">
+      
+      <ion-textarea [autoGrow]="true" label="Instrucciones" label-placement="floating" fill="solid" placeholder="Escribe aquí las instrucciones para tu receta" style="margin-top: 30px; max-width: 80%; height: auto;"></ion-textarea>
+        |
     </div>
   </div>
 </ion-content>
