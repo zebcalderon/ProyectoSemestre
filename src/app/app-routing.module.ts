@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule),
+    canActivate:[authGuard]
   },
   {
     path: 'signup',
@@ -39,7 +41,8 @@ const routes: Routes = [
   {
     path: 'calculadora-macros',
     loadChildren: () => import('./paginas/calculadora-macros/calculadora-macros.module').then( m => m.CalculadoraMacrosPageModule)
-  },  {
+  },
+  {
     path: 'prueba',
     loadChildren: () => import('./paginas/prueba/prueba.module').then( m => m.PruebaPageModule)
   },
