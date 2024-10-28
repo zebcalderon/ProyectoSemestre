@@ -11,24 +11,24 @@
       </ion-text>
       <br>
       <ion-input 
-        type="text" label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [(ngModel)]="correo" (ionBlur)="validateFields()" [counter]="true">
+        type="text" label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [(ngModel)]="correo" [counter]="true">
       </ion-input>
-      <div *ngIf="errors.correoError" class="ion-text-center">
+      <!-- <div *ngIf="errors.correoError" class="ion-text-center">
         <small>{{ errors.correoError }}</small>
-      </div>
+      </div> -->
       <br>
-      <ion-input type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [(ngModel)]="nombre" (ionBlur)="validateFields()" [counter]="true" maxlength="30">
+      <ion-input type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [(ngModel)]="nombre"  [counter]="true" maxlength="30">
       </ion-input>
-      <div *ngIf="errors.nombreError" class="ion-text-center">
+      <!-- <div *ngIf="errors.nombreError" class="ion-text-center">
         <small>{{ errors.nombreError }}</small>
-      </div>
+      </div> -->
       <br>
       <ion-input 
-        type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa  una contraseña" [(ngModel)]="password" (ionBlur)="validateFields()" [counter]="true" minlength="8" maxlength="20">
+        type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa  una contraseña" [(ngModel)]="password" [counter]="true" minlength="8" maxlength="20">
       </ion-input>
-      <div *ngIf="errors.passwordError" class="ion-text-center">
+      <!-- <div *ngIf="errors.passwordError" class="ion-text-center">
         <small>{{ errors.passwordError }}</small>
-      </div>
+      </div> -->
       <br>
 
       <div class="ion-text-center">

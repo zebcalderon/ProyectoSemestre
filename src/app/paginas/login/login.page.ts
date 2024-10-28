@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController, ToastController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+import { FirebaseLoginService } from 'src/app/servicios/firebase-login.service';
 
 @Component({
   selector: 'app-login',
@@ -6,58 +10,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  nombre: string = '';
+  correo: string = '';
   password: string = '';
-  nombreError = ''; 
-  passwordError = ''; 
 
-  constructor() {}
+  constructor(public alerta:AlertController, public toast:ToastController, private router:Router, private storage : Storage, private loginFirebase:FirebaseLoginService) {}
 
-  ngOnInit() {}
-
-  validateNombre() {
-    this.nombreError =
-      !this.nombre
-        ? 'El nombre es requerido.'
-        : this.nombre.length < 3
-        ? 'El nombre debe tener al menos 3 caracteres.'
-        : this.nombre.length > 30
-        ? 'El nombre no puede exceder los 30 caracteres.'
-        : '';
+  async MensajeCorrecto(){
+    const toast = await this.toast.create({
+      message: 'Inicio de sesión correcto',
+      duration: 2000
+    })
+    toast.present();
   }
 
-
-  validatePassword() {
-    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&-/])[A-Za-z\d@$!%*?&]{8,20}$/;
-    this.passwordError =
-      !this.password
-        ? 'La contraseña es requerida.'
-        : this.password.length < 8 || this.password.length > 20
-        ? 'La contraseña debe tener entre 8 y 20 caracteres.'
-        : !pattern.test(this.password)
-        ? 'La contraseña debe incluir mayúsculas, minúsculas, números y signos.'
-        : '';
+  async MensajeError(){
+    const alert = await this.alerta.create({
+      header: 'Error de Inicio',
+      subHeader: 'Contraseña o correo erróneo',
+      message: 'No puede ingresar con los campos usuaio y contraseña vacíos',
+      buttons: ['Aceptar']
+    })
+    alert.present();
   }
 
-  onLogin() {
-    this.validateNombre();
-    this.validatePassword();
-  
-    if (!this.nombreError && !this.passwordError) {
-      const usuarioGuardado = localStorage.getItem('usuario');
-      if (usuarioGuardado) {
-        const usuario = JSON.parse(usuarioGuardado);
-  
-        if (usuario.nombre === this.nombre && usuario.password === this.password) {
-          console.log('Inicio de sesión exitoso');
-        } else {
-          console.log('Nombre o contraseña incorrectos');
-        }
-      } else {
-        console.log('No hay usuarios registrados');
-      }
-    } else {
-      console.log('Errores:', this.nombreError, this.passwordError);
+  ingresar (){
+    if (this.correo ==="" || this.password==="" || this.correo===""){
+      console.log("No puede haber valores vacíos.")
+      this.MensajeError()
     }
+    else {
+      this.loginFirebase.login(this.correo, this.password).then(()=>{
+        this.storage.set("SessionID", true)
+        console.log("Inicio de sesión exitoso")
+        this.MensajeCorrecto()
+        this.router.navigate(["/principal"])
+      }).catch(()=>{
+        console.log("Error al iniciar sesión")
+        this.MensajeError();
+      });
+
+    }
+  }
+
+  async ngOnInit() {
+    await this.storage.create();
   }
 }
