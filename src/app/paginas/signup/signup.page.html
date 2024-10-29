@@ -12,20 +12,20 @@
       </ion-text>
       <br>
       <ion-input 
-        type="text" formControlName="email" label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [(ngModel)]="correo" (ionBlur)="validateFields()" [counter]="true">
+        type="text" formControlName="email" label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [(ngModel)]="correo" [counter]="true">
       </ion-input>
       <!-- <div *ngIf="errors.correoError" class="ion-text-center">
         <small>{{ errors.correoError }}</small>
       </div> -->
       <br>
-      <ion-input formControlName="nombre" type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [(ngModel)]="nombre" (ionBlur)="validateFields()" [counter]="true" maxlength="30">
+      <ion-input formControlName="nombre" type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [(ngModel)]="nombre" [counter]="true" maxlength="30">
       </ion-input>
       <!-- <div *ngIf="errors.nombreError" class="ion-text-center">
         <small>{{ errors.nombreError }}</small>
       </div> -->
       <br>
       <ion-input 
-        type="password" formControlName="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa  una contraseña" [(ngModel)]="password" (ionBlur)="validateFields()" [counter]="true" minlength="8" maxlength="20">
+        type="password" formControlName="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa  una contraseña" [(ngModel)]="password" [counter]="true" minlength="8" maxlength="20">
       </ion-input>
       <!-- <div *ngIf="errors.passwordError" class="ion-text-center">
         <small>{{ errors.passwordError }}</small>
@@ -35,7 +35,7 @@
       <div class="ion-text-center">
         <a href="login">
           <ion-button  
-            shape="round" fill="outline" color="success" (click)="onRegister()">Crear Cuenta
+            shape="round" fill="outline" color="success">Crear Cuenta
           </ion-button>
         </a>
         
