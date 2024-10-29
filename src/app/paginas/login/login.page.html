@@ -11,14 +11,14 @@
       </ion-text>
       <br />
       <ion-input type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa tu nombre de usuario" [(ngModel)]="nombre" (ionBlur)="validateNombre()" [counter]="true" maxlength="30"></ion-input>
-      <div *ngIf="nombreError" class="ion-text-center">
+      <!-- <div *ngIf="nombreError" class="ion-text-center">
         <small>{{ nombreError }}</small>
-      </div>
+      </div> -->
       <br />
       <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa tu contraseña" [(ngModel)]="password" (ionBlur)="validatePassword()" [counter]="true" minlength="8" maxlength="20"></ion-input>
-      <div *ngIf="passwordError" class="ion-text-center">
+      <!-- <div *ngIf="passwordError" class="ion-text-center">
         <small>{{ passwordError }}</small>
-      </div>
+      </div> -->
       <div class="ion-text-center">
         <a routerLink="/signup">
           <ion-text color="primary">
