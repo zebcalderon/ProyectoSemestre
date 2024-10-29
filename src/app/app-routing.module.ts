@@ -54,10 +54,6 @@ const routes: Routes = [
     path: 'publicar',
     loadChildren: () => import('./paginas/publicar/publicar.module').then( m => m.PublicarPageModule)
   },
-  {
-    path: 'configuracion',
-    loadChildren: () => import('./paginas/configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
-  },
 
 
 ];
