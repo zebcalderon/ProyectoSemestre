@@ -10,22 +10,22 @@
         <h1>Inicio de Sesión</h1>
       </ion-text>
       <br />
-      <ion-input type="text" label="Correo" label-placement="floating" fill="solid" placeholder="Ingresa tu Correo" [(ngModel)]="correo" [counter]="true" maxlength="30"></ion-input>
-      <!-- <div *ngIf="correoError" class="ion-text-center">
-        <small>{{ correoError }}</small>
+      <ion-input type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa tu nombre de usuario" [(ngModel)]="nombre" (ionBlur)="validateNombre()" [counter]="true" maxlength="30"></ion-input>
+      <!-- <div *ngIf="nombreError" class="ion-text-center">
+        <small>{{ nombreError }}</small>
       </div> -->
       <br />
-      <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa tu contraseña" [(ngModel)]="password" [counter]="true" minlength="8" maxlength="20"></ion-input>
+      <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa tu contraseña" [(ngModel)]="password" (ionBlur)="validatePassword()" [counter]="true" minlength="8" maxlength="20"></ion-input>
       <!-- <div *ngIf="passwordError" class="ion-text-center">
         <small>{{ passwordError }}</small>
       </div> -->
       <div class="ion-text-center">
-        <ion-button shape="round" fill="outline" color="success"(click)="ingresar()" > Ingresar </ion-button>
         <a routerLink="/signup">
           <ion-text color="primary">
             <h6>¿No tienes Cuenta?</h6>
           </ion-text>
         </a>
+        <ion-button shape="round" fill="outline" color="success"(click)="onLogin()"> Ingresar </ion-button>
       </div>
     </ion-col>
   </ion-row>

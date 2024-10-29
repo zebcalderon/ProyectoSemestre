@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.page.html',
@@ -89,6 +90,7 @@ export class PrincipalPage implements OnInit {
     }
   }
 
+  
 
 
 }

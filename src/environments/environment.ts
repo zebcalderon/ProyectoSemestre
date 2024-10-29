@@ -12,7 +12,6 @@ export const environment = {
     messagingSenderId: '47390431302',
     appId: '1:47390431302:android:47e5a5e6e52fd18c411247',
   }
-  
 };
 
 /*
