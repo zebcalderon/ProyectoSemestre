@@ -10,16 +10,16 @@
         <h1>Inicio de Sesión</h1>
       </ion-text>
       <br />
-      <ion-input type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa tu nombre de usuario" [(ngModel)]="nombre" [counter]="true" maxlength="30"></ion-input>
+      <ion-input type="text" label="Correo" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [(ngModel)]="correo" [counter]="true" maxlength="30"></ion-input>
       <br />
-      <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa tu contraseña" [(ngModel)]="password" [counter]="true" minlength="8" maxlength="20"></ion-input>
+      <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa tu contraseña" [(ngModel)]="password" [counter]="true" minlength="1" maxlength="20"></ion-input>
       <div class="ion-text-center">
+        <ion-button shape="round" fill="outline" color="success" (click)="ingresar()"> Ingresar </ion-button>
         <a routerLink="/signup">
           <ion-text color="primary">
             <h6>¿No tienes Cuenta?</h6>
           </ion-text>
         </a>
-        <ion-button shape="round" fill="outline" color="success"> Ingresar </ion-button>
       </div>
     </ion-col>
   </ion-row>
