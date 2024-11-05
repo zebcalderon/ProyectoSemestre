@@ -58,6 +58,7 @@ export class SignupPage implements OnInit {
         
       }
     } else {
+      loading.dismiss();
       return console.log('Please provide all the required values!');
     }
   }

@@ -13,7 +13,6 @@ export class BarraComponent {
 
   navigate(route: string) {
     this.router.navigateByUrl(route);
-
   }
 
 }

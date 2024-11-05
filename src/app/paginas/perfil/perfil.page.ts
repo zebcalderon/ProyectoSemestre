@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
 
 
@@ -16,7 +17,7 @@ interface UserProfile {
 export class PerfilPage implements OnInit {
   nombre: string = '';
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   async ngOnInit() {
     try {
@@ -29,5 +30,8 @@ export class PerfilPage implements OnInit {
     }
   }
 
+  navigate(route: string) {
+    this.router.navigateByUrl(route);
+  }
 
 }

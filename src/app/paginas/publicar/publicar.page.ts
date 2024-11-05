@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-publicar',
@@ -9,7 +10,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 export class PublicarPage {
   photo: string | null = null;
 
-  constructor() {}
+  constructor(private navController: NavController) {}
 
   // Función para tomar una foto con la cámara
   async takePhoto() {
@@ -46,5 +47,9 @@ export class PublicarPage {
 
   publicarReceta() {
     console.log("Receta publicada");
+  }
+
+  goBack(){
+    this.navController.back();
   }
 }

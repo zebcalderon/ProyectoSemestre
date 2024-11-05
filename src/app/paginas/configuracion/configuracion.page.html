@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/perfil"></ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons> 
   </ion-toolbar>
 </ion-header>
@@ -11,23 +11,23 @@
     <div class="center-container" style="min-height: 667px; position: relative;">  
       <ion-input class="ion-text-center texto-perfil" fill="solid" type="text" [placeholder]="nombre || 'Invitado'" readonly style="font-size: 40px; color: rgb(255, 255, 255); position: absolute; top: 0; margin-top: 30px;"></ion-input>  
 
-      <button class="padding-boton" >
+      <!-- <button class="padding-boton" >
         <h4>Cambiar Contraseña</h4>
       </button>
       
       <button class="padding-boton">
         <h4>Cambiar Correo Electrónico</h4>
       </button>
-      
-      <a href="">
-        <button class="padding-boton" style="background-color: #cb1a27;" (click)="isLoggedIn ? signOut() : router.navigate(['/login'])">
+       -->
+      <a>
+        <button class="padding-boton" style="background-color: #cb1a27;" (click)="isLoggedIn ? signOut() : router.navigate(['/inicio'])">
           <h4>{{ isLoggedIn ? 'Cerrar Sesión' : 'Iniciar Sesión' }}</h4>
         </button>
       </a>
 
-      <button class="padding-boton" style="position: absolute; bottom: 0; color: rgba(255, 255, 255, 0.597); background-color: #ad000e46;">
+      <!-- <button class="padding-boton" style="position: absolute; bottom: 0; color: rgba(255, 255, 255, 0.597); background-color: #ad000e46;">
         <h4>Eliminar Cuenta</h4>
-      </button>
+      </button> -->
     </div>
       
   </div>

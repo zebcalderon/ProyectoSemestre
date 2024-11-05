@@ -1,8 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/comunidad"></ion-back-button>
-    </ion-buttons> 
+      <ion-button (click)="goBack()" expand="block" fill="clear" shape="round">
+        <img src="assets/icon/back-white.png" alt="" style="height: 20px;">
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

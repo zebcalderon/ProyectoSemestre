@@ -35,8 +35,8 @@
           <ion-text *ngIf="errorControl['password'].errors?.pattern" class="errorInput" color="danger">La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número, y tener al menos 8 caracteres.</ion-text>
         </div>
       <br>
-      
-      <div class="ion-text-center">
+      <br>
+      <div class="ion-text-center" style="margin-top: 100px; position: absolute; left: 65%;">
         <ion-fab *ngIf="true" vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
           <ion-fab-button (click)="signUp()">
             <ion-icon name="chevron-forward"></ion-icon>
@@ -46,5 +46,5 @@
     </form>
     </ion-col>
   </ion-row>
-  <ion-img src="assets/imagenes/fruit(1).png" style="height: 250px;"></ion-img>
+  <ion-img src="assets/imagenes/fruit(1).png" style="height: 250px; margin-top: 30px;"></ion-img>
 </ion-content>
