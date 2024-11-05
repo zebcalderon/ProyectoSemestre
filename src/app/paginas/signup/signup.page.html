@@ -12,23 +12,28 @@
         </ion-text>
         <br>
         <ion-input 
-          type="text" formControlName="email" label="email Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu email" [counter]="true">
+          type="text" formControlName="email" label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu email" [counter]="true">
         </ion-input>
-        <div style="padding-top: -26px;padding-bottom: 16px;"
-        *ngIf="this.ionicForm.controls?.['email'].touched && this.ionicForm.controls?.['email'].invalid">
-        <ion-text *ngIf="errorControl.email.errors?.required" class="errorInput" color="danger">email is
-          required.</ion-text>
-        <ion-text *ngIf="errorControl.email.errors?.pattern" class="errorInput" color="danger">Please provide valid
-          email.</ion-text>
-      </div>
+        <div *ngIf="errorControl['email'].touched && errorControl['email'].invalid">
+          <ion-text *ngIf="errorControl['email'].errors?.required" class="errorInput" color="danger">Se requiere correo electrónico.</ion-text>
+          <ion-text *ngIf="errorControl['email'].errors?.pattern" class="errorInput" color="danger">Por favor proporcione un correo electrónico válido.</ion-text>
+        </div>
         <br>
         <ion-input 
           formControlName="nombre" type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [counter]="true" maxlength="30">
         </ion-input>
+        <div *ngIf="errorControl['nombre'].touched && errorControl['nombre'].invalid">
+          <ion-text *ngIf="errorControl['nombre'].errors?.required" class="errorInput" color="danger">Se requiere nombre de usuario</ion-text>
+          <ion-text *ngIf="errorControl['nombre'].errors?.minlength" class="errorInput" color="danger">El nombre debe tener al menos 4 caracteres.</ion-text>
+        </div>
         <br>
         <ion-input
           type="password" formControlName="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa  una contraseña" [counter]="true" minlength="8" maxlength="20">
         </ion-input>
+        <div *ngIf="errorControl['password'].touched && errorControl['password'].invalid">
+          <ion-text *ngIf="errorControl['password'].errors?.required" class="errorInput" color="danger">Se requiere contraseña.</ion-text>
+          <ion-text *ngIf="errorControl['password'].errors?.pattern" class="errorInput" color="danger">La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número, y tener al menos 8 caracteres.</ion-text>
+        </div>
       <br>
       
       <div class="ion-text-center">

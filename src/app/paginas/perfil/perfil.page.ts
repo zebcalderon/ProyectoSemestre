@@ -6,7 +6,7 @@ interface UserProfile {
   uid: string;
   email: string;
   nombre: string;
-  createdAt?: any; // Adjust type as needed
+  createdAt?: any;
 }
 @Component({
   selector: 'app-perfil',

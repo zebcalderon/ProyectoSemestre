@@ -14,18 +14,23 @@ interface UserProfile {
   styleUrls: ['./configuracion.page.scss'],
 })
 export class ConfiguracionPage implements OnInit {
+  isLoggedIn: boolean = false;
   nombre: string = '';
 
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  constructor(private authService: AuthenticationService, public router: Router) {}
   
   async ngOnInit() {
     try {
       const profileData = await this.authService.getProfile() as UserProfile;
       if (profileData && profileData.nombre) {
         this.nombre = profileData.nombre;
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
       }
     } catch (error) {
       console.error("Error fetching profile data:", error);
+      this.isLoggedIn = false;
     }
   }
 
