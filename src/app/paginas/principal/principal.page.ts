@@ -14,6 +14,12 @@ export class PrincipalPage implements OnInit {
   @ViewChild('modalEntrenamientos', { static: true }) modalEntrenamientos!: IonModal;
   @ViewChild('modalPasos', { static: true }) modalPasos!: IonModal;
   @ViewChild('modalKm', { static: true }) modalKm!: IonModal;
+  edad: number | null = null;
+  altura: number | null = null;
+  peso: number | null = null;
+  sexo: string = '';
+  ejercicio: string = '';
+  tmb: number | null = null;
 
   constructor(private animationCtrl: AnimationController) { }
 
@@ -88,6 +94,42 @@ export class PrincipalPage implements OnInit {
     if (this.modalKm) {
       this.modalKm.dismiss(null, 'cancelar');
     }
+  }
+
+  calcularTMB() {
+    const peso = this.peso ?? 0;
+    const altura = this.altura ?? 0;
+    const edad = this.edad ?? 0;
+
+    if (peso === 0 || altura === 0 || edad === 0 || !this.sexo || !this.ejercicio) {
+      alert('Por favor, completa todos los campos correctamente.');
+      return;
+    }
+    if (this.sexo === 'Hombre') {
+      this.tmb = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * edad);
+    } else if (this.sexo === 'Mujer') {
+      this.tmb = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad);
+    } 
+
+    if (this.tmb !== null) {
+      switch (this.ejercicio) {
+        case 'ligera':
+          this.tmb *= 1.375;
+          break;
+        case 'moderada':
+          this.tmb *= 1.55;
+          break;
+        case 'intensa' :
+          this.tmb *= 1.725;
+          break;
+        default:
+          break;
+      }
+
+      
+        alert(`Tu TMB es: ${this.tmb.toFixed(2)} kcal/día`)
+    }
+
   }
 
   

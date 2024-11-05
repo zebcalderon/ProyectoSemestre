@@ -96,33 +96,31 @@
         
       </ion-header>
       <ion-content>
-        <ion-input type="text" placeholder="Edad" fill="solid" maxlength="2" class="boton"></ion-input>
+        <ion-input [(ngModel)]="edad" type="number" placeholder="Edad" fill="solid" maxlength="2" class="boton"></ion-input>
         <br>
-        <ion-input type="text" placeholder="Altura (cm)" fill="solid" maxlength="3" class="boton"></ion-input>
+        <ion-input [(ngModel)]="altura" type="number" placeholder="Altura (cm)" fill="solid" maxlength="3" class="boton"></ion-input>
         <br>
         <ion-list>
           <ion-item expand="block" style="color: orange;">
-            <ion-select placeholder="Sexo">
+            <ion-select [(ngModel)]="sexo" placeholder="Sexo">
               <ion-select-option value="Hombre">Hombre</ion-select-option>
               <ion-select-option value="Mujer">Mujer</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
         <br>
-        <ion-input type="text" placeholder="Peso (kg)" fill="solid" maxlength="3" class="boton"></ion-input>
+        <ion-input [(ngModel)]="peso" type="number" placeholder="Peso (kg)" fill="solid" maxlength="3" class="boton"></ion-input>
         <br>
         <ion-list>
           <ion-item expand="block" style="color: orange;">
-            <ion-select placeholder="Ejercicio">
-              <ion-select-option value="Opc1">Poco o ningún ejercicio</ion-select-option>
-              <ion-select-option value="Opc2">Ejercicio ligero</ion-select-option>
-              <ion-select-option value="Opc3">Ejercicio moderado</ion-select-option>
-              <ion-select-option value="Opc4">Ejercicio Fuerte</ion-select-option>
-              <ion-select-option value="Opc5">Ejercicio Muy Fuerte (dos veces al día)</ion-select-option>
+            <ion-select placeholder="Ejercicio" [(ngModel)]="ejercicio">
+              <ion-select-option value="ligera">Actividad ligera (1-3 días a la semana)</ion-select-option>
+              <ion-select-option value="moderada">Actividad moderada (3-5 días a la semana)</ion-select-option>
+              <ion-select-option value="intensa">Actividad muy intensa (6-7 días a la semana)</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
-        <ion-button expand="block" fill="outline" shape="round" class="boton" color="warning">
+        <ion-button expand="block" fill="outline" shape="round" class="boton" color="warning" (click)="calcularTMB()">
           Calcular
         </ion-button>
       </ion-content>
