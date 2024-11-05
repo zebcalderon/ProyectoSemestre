@@ -6,35 +6,37 @@
   </ion-toolbar>
   <ion-row class="ion-justify-content-center" style="padding-bottom: 50px;">
     <ion-col size="8">
-      <form [formGroup]="regForm" novalidate>
+      <form [formGroup]="ionicForm" novalidate>
         <ion-text class="ion-text-center">
           <h1>Registrarse</h1>
         </ion-text>
         <br>
         <ion-input 
-          type="text" [(ngModel)]="correo" label="Correo Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [(ngModel)]="correo" [counter]="true">
-        </ion-input>
-        <br>
-        <ion-input [(ngModel)]="nombre" type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [(ngModel)]="nombre" [counter]="true" maxlength="30">
+          type="text" formControlName="email" label="email Electrónico" label-placement="floating" fill="solid" placeholder="Ingresa tu email" [counter]="true">
         </ion-input>
         <div style="padding-top: -26px;padding-bottom: 16px;"
-        *ngIf="this.ionicForm.controls?.['nombre'].touched && this.ionicForm.controls?.['nombre'].invalid">
-        <ion-text *ngIf="errorControl.nombre.errors?.required" class="errorInput" color="danger">nombre is
+        *ngIf="this.ionicForm.controls?.['email'].touched && this.ionicForm.controls?.['email'].invalid">
+        <ion-text *ngIf="errorControl.email.errors?.required" class="errorInput" color="danger">email is
           required.</ion-text>
+        <ion-text *ngIf="errorControl.email.errors?.pattern" class="errorInput" color="danger">Please provide valid
+          email.</ion-text>
       </div>
         <br>
         <ion-input 
-          type="password" [(ngModel)]="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa  una contraseña" [(ngModel)]="password" [counter]="true" minlength="8" maxlength="20">
+          formControlName="nombre" type="text" label="Nombre de Usuario" label-placement="floating" fill="solid" placeholder="Ingresa un nombre de usuario" [counter]="true" maxlength="30">
+        </ion-input>
+        <br>
+        <ion-input
+          type="password" formControlName="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa  una contraseña" [counter]="true" minlength="8" maxlength="20">
         </ion-input>
       <br>
-
+      
       <div class="ion-text-center">
-        <a href="login">
-          <ion-button  
-            shape="round" fill="outline" color="success">Crear Cuenta
-          </ion-button>
-        </a>
-        
+        <ion-fab *ngIf="true" vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
+          <ion-fab-button (click)="signUp()">
+            <ion-icon name="chevron-forward"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
       </div>
     </form>
     </ion-col>
