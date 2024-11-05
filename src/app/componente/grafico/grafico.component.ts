@@ -23,11 +23,11 @@ export class GraficoComponent  implements OnInit {
       series: [
         {
           name: "Calorias recomendadas",
-          data: [31, 40, 28, 51, 42, 109, 100]
+          data: [1800,1850,1890,2000]
         },
         {
           name: "Calorias consumidas",
-          data: [11, 32, 45, 32, 34, 52, 41]
+          data: [2000,1900,1950,2100]
         }
       ],
       chart: {
@@ -44,18 +44,18 @@ export class GraficoComponent  implements OnInit {
       xaxis: {
         type: "datetime",
         categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z"
+          "2018-09-19",
+          "2018-09-20",
+          "2018-09-21",
+          "2018-09-22",
+          "2018-09-23",
+          "2018-09-24",
+          "2018-09-25"
         ]
       },
       tooltip: {
         x: {
-          format: "dd/MM/yy HH:mm"
+          
         }
       }
     };
