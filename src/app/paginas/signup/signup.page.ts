@@ -59,6 +59,7 @@ export class SignupPage implements OnInit {
       }
     } else {
       loading.dismiss();
+      this.presentToastError('Por favor llene correctamente todos los campos')
       return console.log('Please provide all the required values!');
     }
   }
@@ -70,6 +71,18 @@ export class SignupPage implements OnInit {
       message: message,
       duration: 1500,
       position: 'top',
+    });
+
+    await toast.present();
+  }
+
+  async presentToastError(message: string) {
+    console.log(message);
+    
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: 'middle',
     });
 
     await toast.present();
