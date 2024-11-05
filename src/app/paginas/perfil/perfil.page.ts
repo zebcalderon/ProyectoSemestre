@@ -20,7 +20,7 @@ export class PerfilPage implements OnInit {
 
   async ngOnInit() {
     try {
-      const profileData = await this.authService.getProfile() as UserProfile; // Cast to UserProfile type
+      const profileData = await this.authService.getProfile() as UserProfile;
       if (profileData && profileData.nombre) {
         this.nombre = profileData.nombre;
       }

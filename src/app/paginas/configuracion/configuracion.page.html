@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <div class="main-container" style="height: 100%;">
     <div class="center-container" style="min-height: 667px; position: relative;">  
-      <ion-input class="ion-text-center texto-perfil" fill="solid" type="text" placeholder="Gallo Gallar" readonly style="font-size: 40px; color: rgb(255, 255, 255); position: absolute; top: 0; margin-top: 30px;"></ion-input>  
+      <ion-input class="ion-text-center texto-perfil" fill="solid" type="text" [placeholder]="nombre || 'Invitado'" readonly style="font-size: 40px; color: rgb(255, 255, 255); position: absolute; top: 0; margin-top: 30px;"></ion-input>  
 
       <button class="padding-boton" >
         <h4>Cambiar Contraseña</h4>
@@ -20,7 +20,7 @@
       </button>
       
       <a href="">
-        <button class="padding-boton" style="background-color: #cb1a27;">
+        <button class="padding-boton" style="background-color: #cb1a27;" (click)="signOut()">
           <h4>Cerrar Sesión</h4>
         </button>
       </a>
