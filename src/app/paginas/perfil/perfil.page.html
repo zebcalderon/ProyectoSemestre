@@ -20,7 +20,7 @@
         
         <ion-img class="img-perfil" src="assets/imagenes/chicken.png" alt="foto-perfil"></ion-img>
         <br>
-        <ion-input class="ion-text-center texto-perfil" fill="solid" type="text" placeholder="Gallo Gallar" readonly style="font-size: 40px; color: rgb(255, 255, 255);"></ion-input>  
+        <ion-input class="ion-text-center texto-perfil" fill="solid" type="text" [placeholder]="nombre || 'Invitado'" readonly style="font-size: 40px; color: rgb(255, 255, 255);"></ion-input>  
       </div>
     </ion-row>
     
@@ -58,7 +58,7 @@
             <a href="perfil" class="sin-estilo">
               <h5>
                 <i class="icono mini-perfil"></i>
-                {{ usuario?.nombre || "Invitado" }} <!-- Muestra 'Invitado' si el nombre no está disponible -->
+                {{ nombre || "Invitado" }}
               </h5>
             </a>            
           </ion-text>
