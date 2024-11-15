@@ -4,43 +4,58 @@
       <ion-button (click)="goBack()" expand="block" fill="clear" shape="round">
         Volver
       </ion-button>
-    </ion-buttons> 
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="main-container">
     <div class="center-container">
-      <div class="container" style="min-width: 300px; min-height: 300px; background-color: rgb(26, 26, 26); border-radius: 30px; position: relative; align-items: center; display: flex; justify-content: center;">
+      <!-- Contenedor de la foto -->
+      <div
+        class="container"
+        style="min-width: 300px; min-height: 300px; background-color: rgb(26, 26, 26); border-radius: 30px; position: relative; align-items: center; display: flex; justify-content: center;">
         <ion-row>
           <ion-col size="12">
             <button class="transparente" style="top: 50%; left: 50%;">
-              <img [src]="photo ? photo : 'assets/imagenes/camara.png'" alt="" style="height: 200px; width: auto;">
+              <img [src]="foto" alt="Foto de receta" style="height: 200px; width: auto;">
             </button>
           </ion-col>
         </ion-row>
       </div>
 
+      <!-- Botones para tomar/subir fotos -->
       <div style="display: flex; justify-content: space-around; margin-top: 15px;">
-        
-        <ion-button expand="block" (click)="takePhoto()">
+        <ion-button expand="block" (click)="tomarPhoto()">
           Tomar Foto
         </ion-button>
-
-        <!-- Botón para Subir Foto desde Galería -->
-        <ion-button expand="block" (click)="selectPhoto()">
+        <ion-button expand="block" (click)="seleccionarPhoto()">
           Subir Foto
         </ion-button>
-      </div>  
+      </div>
 
-      <ion-input type="text" label="Título" label-placement="floating" fill="solid" placeholder="Escribe el título de tu receta" style="margin-top: 30px; max-width: 80%;"></ion-input>
+      <!-- Campos de entrada -->
+      <ion-item style="margin-top: 30px; max-width: 80%;">
+        <ion-label position="floating">Título</ion-label>
+        <ion-input [(ngModel)]="titulo" placeholder="Escribe el título de tu receta"></ion-input>
+      </ion-item>
 
-      <ion-text>
-        <h1>Ingredientes</h1>
-      </ion-text>
-      <input type="checkbox" name="" id=""> 
+      <ion-item style="margin-top: 30px; max-width: 80%;">
+        <ion-label position="floating">Ingredientes</ion-label>
+        <ion-textarea [(ngModel)]="ingredientes" auto-grow="true" placeholder="Escribe los ingredientes"></ion-textarea>
+      </ion-item>
 
-      <ion-textarea [autoGrow]="true" label="Instrucciones" label-placement="floating" fill="solid" placeholder="Escribe aquí las instrucciones para tu receta" style="margin-top: 30px; max-width: 80%; height: auto;"></ion-textarea>
+      <ion-item style="margin-top: 30px; max-width: 80%;">
+        <ion-label position="floating">Instrucciones</ion-label>
+        <ion-textarea [(ngModel)]="instrucciones" auto-grow="true" placeholder="Escribe las instrucciones"></ion-textarea>
+      </ion-item>
     </div>
-  </div> 
-</ion-content> 
+
+    <!-- Botón para subir receta -->
+    <div style="position: absolute; bottom: 30px; width: 100%; display: flex; justify-content: center;">
+      <ion-button expand="block" (click)="uploadReceta()" style="max-width: 80%;">
+        Subir Receta
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

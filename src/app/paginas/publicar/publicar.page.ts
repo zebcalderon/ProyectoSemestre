@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { NavController } from '@ionic/angular';
+import { Firestore, collection, addDoc, Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-publicar',
@@ -8,48 +9,72 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./publicar.page.scss'],
 })
 export class PublicarPage {
-  photo: string | null = null;
+  // Propiedades de la receta
+  titulo: string = ''; // Título de la receta
+  instrucciones: string = ''; // Instrucciones de la receta
+  ingredientes: string = ''; // Ingredientes de la receta
+  foto: string = 'assets/imagenes/camara.png'; // Foto por defecto
 
-  constructor(private navController: NavController) {}
+  constructor(private navController: NavController, private firestore: Firestore) {}
 
   // Función para tomar una foto con la cámara
-  async takePhoto() {
-    const image = await Camera.getPhoto({
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera, // Esto asegura que se abra la cámara
-      quality: 90,
-    });
-    this.photo = image.dataUrl || null;
-  }
-
-  // Función para seleccionar una foto de la galería
-  async selectPhoto() {
-    const image = await Camera.getPhoto({
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Photos, // Abre la galería en lugar de la cámara
-      quality: 90,
-    });
-    this.photo = image.dataUrl || null;
-  }
-
-  // Nueva función para elegir entre tomar foto o seleccionar de la galería
-  async takeOrUploadPhoto() {
-    const action = prompt('¿Deseas tomar una foto o subir desde la galería? Escribe "tomar" o "subir".');
-
-    if (action === 'tomar') {
-      await this.takePhoto(); // Llama a tu método para tomar la foto
-    } else if (action === 'subir') {
-      await this.selectPhoto(); // Llama a tu método para seleccionar de la galería
-    } else {
-      alert('Acción no válida');
+  async tomarPhoto() {
+    try {
+      const image = await Camera.getPhoto({
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera, // Abre la cámara
+        quality: 90,
+      });
+      this.foto = image.dataUrl || this.foto;
+    } catch (error) {
+      console.error('Error al tomar foto:', error);
+      alert('No se pudo acceder a la cámara.');
     }
   }
 
-  publicarReceta() {
-    console.log("Receta publicada");
+  // Función para seleccionar una foto de la galería
+  async seleccionarPhoto() {
+    try {
+      const image = await Camera.getPhoto({
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Photos, // Abre la galería
+        quality: 90,
+      });
+      this.foto = image.dataUrl || this.foto;
+    } catch (error) {
+      console.error('Error al seleccionar foto:', error);
+      alert('No se pudo acceder a la galería.');
+    }
   }
 
-  goBack(){
+  // Función para subir la receta a Firestore
+  async uploadReceta() {
+    if (!this.titulo || !this.instrucciones || !this.ingredientes) {
+      alert('Por favor, llena todos los campos.');
+      return;
+    }
+
+    const recetaData = {
+      title: this.titulo,
+      instructions: this.instrucciones,
+      ingredients: this.ingredientes,
+      photoUrl: this.foto,
+      createdAt: Timestamp.fromDate(new Date()),
+    };
+
+    try {
+      const recetaCollection = collection(this.firestore, 'receta');
+      await addDoc(recetaCollection, recetaData);
+      alert('Receta subida exitosamente.');
+      this.goBack();
+    } catch (error) {
+      console.error('Error al subir la receta:', error);
+      alert('Hubo un error al subir la receta.');
+    }
+  }
+
+  // Función para redirigir a la página anterior
+  goBack() {
     this.navController.back();
   }
 }
