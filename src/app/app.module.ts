@@ -12,7 +12,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -24,11 +23,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-

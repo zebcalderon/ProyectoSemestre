@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { NavController } from '@ionic/angular';
-import { Firestore as Receta, collection, addDoc, Timestamp } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, Timestamp } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Component({
   selector: 'app-publicar',
@@ -15,7 +17,10 @@ export class PublicarPage {
   ingredientes: string = ''; // Ingredientes de la receta
   foto: string = 'assets/imagenes/camara.png'; // Foto por defecto
 
-  constructor(private navController: NavController, private receta: Receta) {}
+  constructor(
+    private navController: NavController,
+    private firestore: Firestore // Servicio Firestore
+  ) {}
 
   // Función para tomar una foto con la cámara
   async tomarPhoto() {
@@ -63,7 +68,7 @@ export class PublicarPage {
     };
 
     try {
-      const recetaCollection = collection(this.receta, 'receta');
+      const recetaCollection = collection(this.firestore, 'recetas');
       await addDoc(recetaCollection, recetaData);
       alert('Receta subida exitosamente.');
       this.goBack();
