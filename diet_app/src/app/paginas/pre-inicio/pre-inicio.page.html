@@ -1,13 +1,48 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>pre_inicio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-app>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">pre_inicio</ion-title>
+      <ion-title class="titulo1">Bienvenido</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
+<ion-content>
+  <br>
+  <br>
+  <ion-img src="assets/imagenes/fruit_01.png" style="height: 250px;"></ion-img>
+  <ion-row class="ion-justify-content-center">
+  <ion-col size="12">
+    <div class="ion-text-center">
+      <br>
+      <br>
+      
+      <ion-col size="6">
+        <ion-button shape="round" routerLink="/login" color="success" fill="outline">
+          Iniciar Sesión
+        </ion-button>
+      </ion-col>
+      
+      <ion-col size="6">    
+        <ion-button shape="round" routerLink="/signup" fill="outline">
+          Crear Usuario
+        </ion-button>
+      </ion-col>
+      
+    </div>
+      <ion-col>
+        <ion-button expand="block" fill="clear" size="small" color="medium" routerLink="/principal">
+          Iniciar sin usuario
+        </ion-button>
+      </ion-col> 
+      
+    
+  </ion-col>
+  </ion-row>
+
 </ion-content>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+</ion-app>

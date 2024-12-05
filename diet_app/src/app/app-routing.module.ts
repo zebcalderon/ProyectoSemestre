@@ -13,14 +13,6 @@ const routes: Routes = [
   },
   {
     path: 'iniciar-sesion',
-    loadChildren: () => import('./iniciar-sesion/iniciar-sesion.module').then( m => m.IniciarSesionPageModule)
-  },
-  {
-    path: 'registrar-sesion',
-    loadChildren: () => import('./registrar-sesion/registrar-sesion.module').then( m => m.RegistrarSesionPageModule)
-  },
-  {
-    path: 'iniciar-sesion',
     loadChildren: () => import('./paginas/iniciar-sesion/iniciar-sesion.module').then( m => m.IniciarSesionPageModule)
   },
   {
