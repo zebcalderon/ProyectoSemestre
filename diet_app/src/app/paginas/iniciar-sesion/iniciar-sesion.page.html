@@ -1,13 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>iniciar_sesion</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">iniciar_sesion</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-row class="ion-justify-content-center" style="padding-bottom: 50px;">
+    <ion-col size="8">
+      <ion-text class="ion-text-center">
+        <h1>Inicio de Sesión</h1>
+      </ion-text>
+      <br>
+      <ion-input type="text" label="Correo" label-placement="floating" fill="solid" placeholder="Ingresa tu correo" [(ngModel)]="email" maxlength="30"></ion-input>
+      <br>
+      <ion-input type="password" label="Contraseña" label-placement="floating" fill="solid" placeholder="Ingresa tu contraseña" [(ngModel)]="password" minlength="1" maxlength="20"></ion-input>
+      <div class="ion-text-center">
+        <ion-button shape="round" fill="outline" color="success" (click)="ingresar()"> Ingresar </ion-button>
+        <a routerLink="/registrar-sesion">
+          <ion-text color="primary">
+            <h6>¿No tienes Cuenta?</h6>
+          </ion-text>
+        </a>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-img src="assets/imagenes/fruit_02.png" style="height: 250px;"></ion-img>
 </ion-content>
