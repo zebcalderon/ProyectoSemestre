@@ -14,7 +14,7 @@ export class RegistrarSesionPage implements OnInit {
   password: string = '';  
   user: string = '';
 
-  ionicForm!: FormGroup
+  ionicForm!: FormGroup;
 
   constructor(
     private toastController: ToastController,
@@ -29,7 +29,7 @@ export class RegistrarSesionPage implements OnInit {
       email: ['',
         [
           Validators.required,
-          Validators.pattern
+          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
         ]
       ],
       password: ['',
