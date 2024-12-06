@@ -6,8 +6,12 @@ import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
-  declarations: [FooterComponent],
-  exports: [FooterComponent],
+  declarations: [
+    FooterComponent
+  ],
+  exports: [
+    FooterComponent
+  ],
   imports: [
     CommonModule,
     IonicModule

@@ -21,7 +21,7 @@ export class PreInicioPage implements OnInit {
     await loading.present();
     await this.sesion_invitado.create();
     await this.sesion_invitado.get('invitado').then((val: string) => {
-      if(val == null){
+      if(val == null || val == 'true'){
         this.sesion_invitado.set('invitado', 'loggedOut');
         loading.dismiss();
       } else if(val == 'loggedOut'){
