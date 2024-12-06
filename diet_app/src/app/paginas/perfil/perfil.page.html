@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Perfil</ion-title>
+      <ion-title size="large">Perfíl</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -15,7 +15,7 @@
         </button>
         
         <!-- Imagen de perfil que puede cambiar al tomar una foto -->
-        <ion-img *ngIf="photo; else defaultProfile" class="img-perfil" [src]="photo" alt="foto-perfil" (click)="takePhoto()"></ion-img>
+        <ion-img *ngIf="photo; else defaultProfile" class="img-perfil" [src]="photo" alt="foto-perfil" (click)="takePhoto()" style="border-radius: 50px;"></ion-img>
 
         <!-- Imagen por defecto si no se ha tomado ninguna foto -->
         <ng-template #defaultProfile>
