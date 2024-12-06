@@ -1,101 +1,56 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Perfíl</ion-title>
+      <ion-title size="large">Perfil</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div class="main-container">
     <ion-row>
       <div class="center-container" style="position: relative;">
-        <!-- <button class="transparente editar">
-          <img src="assets/icon/editar.png" alt="Editar Imagen de Perfíl">
-        </button> -->
         <button class="transparente configuraciones">
           <a (click)="navigate('/configuracion')">
             <img src="assets/icon/config-128.png" alt="Configuraciones">
           </a>
-          
         </button>
         
-        <ion-img class="img-perfil" src="assets/imagenes/chicken.png" alt="foto-perfil"></ion-img>
+        <!-- Imagen de perfil que puede cambiar al tomar una foto -->
+        <ion-img *ngIf="photo; else defaultProfile" class="img-perfil" [src]="photo" alt="foto-perfil" (click)="takePhoto()"></ion-img>
+
+        <!-- Imagen por defecto si no se ha tomado ninguna foto -->
+        <ng-template #defaultProfile>
+          <ion-img class="img-perfil" src="assets/imagenes/chicken.png" alt="foto-perfil" (click)="takePhoto()"></ion-img>
+        </ng-template>
+
         <br>
         <ion-input class="ion-text-center texto-perfil" fill="solid" type="text" [placeholder]="nombre || 'Invitado'" readonly style="font-size: 40px; color: rgb(255, 255, 255);"></ion-input>  
       </div>
     </ion-row>
-    
+
+    <!-- Resto del contenido de perfil -->
     <ion-row class="ion-text-center" style="padding-top: 30px;">
       <ion-col size="6">
         <ion-text>
-          <h1><i class="icono estrella"></i>
-            5</h1>
+          <h1><i class="icono estrella"></i>5</h1>
         </ion-text>
       </ion-col>
       <ion-col size="6">
         <ion-text>
-          <h1><i class="icono guardar"></i>
-            6</h1>
+          <h1><i class="icono guardar"></i>6</h1>
         </ion-text>
       </ion-col>
     </ion-row>
-    <!-- CONFIRMAR SI PERFIL ES DEL USUARIO O NO -->
-    <!-- SI ES DEL USUARIO MOSTRAR COMO "MIS PUBLICACIONES" -->
-    <!-- SI NO ES EL PERFIL DEL USUARIO, SÓLO PONER "PUBLICACIONES" -->
+
     <ion-row>
-      <ion-col size="12" class="">
+      <ion-col size="12">
         <ion-text class="ion-text-center">
-          <!-- INGRESAR CANTIDAD DE PUBLICACIONES -->
           <h1 style="font-weight: 500;">Mis Publicaciones (1):</h1>
         </ion-text>
       </ion-col>
     </ion-row>
-    <!-- PUBLICACIONES -->
-    <ion-row>
-      <div class="center-container-hor">
-        <div class="container" style="height: auto; width: 80%; margin-bottom: 50px; padding-bottom: 20px; border-bottom: 1px solid rgba(66, 66, 78, 1);">
-          <ion-text>
-            <!-- AQUÍ HAY QUE INGRESAR EL NOMBRE DEL USUARIO DEL PERFÍL Y SU ÍCONO DE PERFÍL -->
-            <a href="perfil" class="sin-estilo">
-              <h5>
-                <i class="icono mini-perfil"></i>
-                {{ nombre || "Invitado" }}
-              </h5>
-            </a>            
-          </ion-text>
-          <ion-text>
-            <a href="" class="sin-estilo">
-              <h1 style="margin: 0; padding: 0; margin-bottom: 5px;">Gohan Casero</h1>
-            </a>
-          </ion-text>
-          <a href="publicacion">
-            <button class="transparente publicacion">
-              <img class="foto-publicacion" src="assets/imagenes/comida1.jpg" alt="">
-              
-              <!-- BOTÓN DE GUARDAR: si es que la receta ya está guardada, se mostrará sin opacidad reducida -->
-              <button class="guardar-btn transparente" style="width: auto">
-                <img src="assets/icon/guardar-128.png" style="width: 60px; opacity: 0.4;" alt="guardar">
-              </button>
 
-              <button class="puntaje" style="width: 55%; padding-left: 10px; padding-right: 10px;">
-                <ion-row>
-                  <ion-col><img src="assets/icon/star64.png" alt="" style="width: 100%;"></ion-col>
-                  <ion-col><img src="assets/icon/star64.png" alt="" style="width: 100%;"></ion-col>
-                  <ion-col><img src="assets/icon/star64.png" alt="" style="width: 100%;"></ion-col>
-                  <ion-col><img src="assets/icon/star64.png" alt="" style="width: 100%;"></ion-col>
-                  <ion-col><img src="assets/icon/star64.png" alt="" style="width: 100%;"></ion-col>
-                </ion-row>
-              </button>
-              
-            </button>
-          </a>
-          <ion-text>
-            <h1 style="margin-top: 10px; left: 40%; text-align: right; font-weight: 500;">500 Kcal por porción</h1>
-          </ion-text>
-        </div>
-      </div>
-    </ion-row>
+    <!-- Publicaciones y demás contenido -->
   </div>
-  
 </ion-content>
 
-<app-footer> </app-footer>
+<app-footer></app-footer>
