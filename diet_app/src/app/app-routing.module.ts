@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'publicacion',
     loadChildren: () => import('./paginas/publicacion/publicacion.module').then( m => m.PublicacionPageModule)
   },
+  {
+    path: 'feed',
+    loadChildren: () => import('./paginas/feed/feed.module').then( m => m.FeedPageModule)
+  },
 ];
 
 @NgModule({

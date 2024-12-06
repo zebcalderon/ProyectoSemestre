@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ConfiguracionPageRoutingModule } from './configuracion-routing.module';
+import { FeedPageRoutingModule } from './feed-routing.module';
 
-import { ConfiguracionPage } from './configuracion.page';
+import { FeedPage } from './feed.page';
 import { ShareModule } from 'src/app/modulos/share/share.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ShareModule } from 'src/app/modulos/share/share.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ConfiguracionPageRoutingModule,
-    ShareModule
+    FeedPageRoutingModule,
+    ShareModule,
   ],
-  declarations: [ConfiguracionPage]
+  declarations: [FeedPage]
 })
-export class ConfiguracionPageModule {}
+export class FeedPageModule {}

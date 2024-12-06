@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage-angular';
 export class PreInicioPage implements OnInit {
 
   constructor(
-    private sesion_invitado: Storage,
+    private sesion_actual: Storage,
     private router:Router,
     private loadingController:LoadingController
   ) { }
@@ -19,10 +19,10 @@ export class PreInicioPage implements OnInit {
   async ngOnInit() {
     const loading = await this.loadingController.create();
     await loading.present();
-    await this.sesion_invitado.create();
-    await this.sesion_invitado.get('invitado').then((val: string) => {
-      if(val == null || val == 'true'){
-        this.sesion_invitado.set('invitado', 'loggedOut');
+    await this.sesion_actual.create();
+    await this.sesion_actual.get('sesion').then((val: string) => {
+      if(val == null || val == 'invitado'){
+        this.sesion_actual.set('sesion', 'loggedOut');
         loading.dismiss();
       } else if(val == 'loggedOut'){
         loading.dismiss();
@@ -35,7 +35,7 @@ export class PreInicioPage implements OnInit {
   }
 
   iniciar_invitado(){
-    this.sesion_invitado.set('invitado', 'true');
+    this.sesion_actual.set('sesion', 'invitado');
     this.router.navigate(['/inicio']);
   }
 

@@ -21,6 +21,7 @@ export class IniciarSesionPage implements OnInit {
     private router:Router,
     private storage:Storage,
     private loginService:FirebaseLoginService,
+    private sesion_actual:Storage
   ) {}
 
   async MensajeCorrecto(){
@@ -48,9 +49,9 @@ export class IniciarSesionPage implements OnInit {
     }
     else {
       this.loginService.login(this.email, this.password).then(()=>{
-        this.storage.set("SessionID", true)
         console.log("Inicio de sesión exitoso")
         this.MensajeCorrecto()
+        this.sesion_actual.set('sesion', 'loggedIn')
         this.router.navigate(["/principal"])
       }).catch(()=>{
         console.log("Error al intentar iniciar sesión")

@@ -35,3 +35,149 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+ion-content {
+    --background: rgb(35, 35, 41);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column; /* Stacks the items vertically */
+    // justify-content: center; /* Centers the content horizontally */
+    // align-items: center; /* Centers the content vertically, optional */
+    // width: 90%; /* Adjust width as needed */
+    max-width: 600px; /* Limits the maximum width */
+    margin: 0 auto; /* Ensures the container is centered horizontally */
+    height: auto; /* Adjust height as needed */
+    // padding: 20px; /* Optional padding */
+    // box-sizing: border-box; /* Ensures padding is included in width and height */
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 45vh;
+    width: 100%;
+}
+
+.center-container-hor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // height: 45vh;
+    width: 100%;
+}
+
+.container-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    width: auto;
+    height: auto;
+}
+
+.img-perfil {
+    max-width: 100%;
+    max-height: 35vh;
+    width: auto;
+    height: auto;
+}
+
+.texto-perfil {
+    margin-top: 20px;
+    width: 80%; 
+    max-width: 700px;
+}
+
+.icono {
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;   
+    vertical-align: middle;
+}
+
+.estrella {
+    background-image: url("/assets/icon/star64.png");
+    height: 45px; 
+    width: 45px;
+}
+
+.guardar {
+    background-image: url("/assets/icon/guardar-128.png");
+    height: 50px; 
+    width: 50px;
+}
+
+.mini-perfil{
+    background-image: url("/assets/icon/chicken64.png");
+    height: 40px;
+    width: 40px;
+}
+
+.mini-perfil-2 {
+    background-image: url("/assets/icon/chicken-blue-64.png");
+    height: 40px;
+    width: 40px;
+}
+
+.mini-perfil-3 {
+    background-image: url("/assets/icon/chicken-red-64.png");
+    height: 40px;
+    width: 40px;
+}
+.editar {
+    position: relative;
+    top: 10%;
+    left: 35%;
+    width: 60px;
+    height: auto;
+    display: flex;
+}
+
+
+// PERFÍL
+.puntaje {
+    bottom: 10px;
+    right: 20px;
+    position: absolute;
+    display: flex;
+    border-radius: 30px;
+    background-color: rgba(35, 35, 41, 0.8)
+}
+
+.transparente {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.publicacion {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    position: relative; 
+}
+
+.foto-publicacion {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.guardar-btn {
+    top: 10px;
+    right: 20px;
+    position: absolute;
+    display: flex;
+}
+
+// PERFIL
+
+.sin-estilo {
+    text-decoration: none; color: inherit;
+}
