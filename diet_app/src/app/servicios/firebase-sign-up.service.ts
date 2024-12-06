@@ -21,10 +21,10 @@ export class FirebaseSignUpService {
 
       // After user is created, save additional data (like username) in Firestore
       if (userCredential.user) {
-        await this.firestore.collection('users').doc(userCredential.user.uid).set({
+        await this.firestore.collection('usuarios').doc(userCredential.user.uid).set({
           uid: userCredential.user.uid,
           email: email,
-          user: user,
+          username: user,
         });
       }
 

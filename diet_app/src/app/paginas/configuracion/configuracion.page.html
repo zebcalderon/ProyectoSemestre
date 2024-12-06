@@ -1,8 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons> 
+      <ion-button (click)="goBack()" expand="block" fill="clear" shape="round">
+        <img src="assets/icon/back-white.png" alt="" style="height: 20px;">
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -20,7 +22,7 @@
       </button>
        -->
       <a>
-        <button class="padding-boton" style="background-color: #cb1a27;" (click)="isLoggedIn ? signOut() : router.navigate(['/pre-inicio'])">
+        <button class="padding-boton" style="background-color: #cb1a27;" (click)="signOut()">
           <h4>{{ isLoggedIn ? 'Cerrar Sesión' : 'Iniciar Sesión' }}</h4>
         </button>
       </a>

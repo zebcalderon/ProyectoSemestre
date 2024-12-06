@@ -52,7 +52,7 @@ export class IniciarSesionPage implements OnInit {
         console.log("Inicio de sesión exitoso")
         this.MensajeCorrecto()
         this.sesion_actual.set('sesion', 'loggedIn')
-        this.router.navigate(["/principal"])
+        this.router.navigate(["/inicio"])
       }).catch(()=>{
         console.log("Error al intentar iniciar sesión")
         this.MensajeError();

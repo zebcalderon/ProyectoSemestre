@@ -15,7 +15,7 @@ export class FirebaseAuthenticationService {
     const currentUser = await this.fireAuth.currentUser;
     if (currentUser) {
       // Fetch the user's profile from Firestore using the user's UID
-      const userDoc = await this.firestore.collection('users').doc(currentUser.uid).get().toPromise();
+      const userDoc = await this.firestore.collection('usuarios').doc(currentUser.uid).get().toPromise();
       return userDoc.data();
     }
     return null;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class FirebaseLoginService {
     private fireAuth: AngularFireAuth,
     private router:Router,
     private firestore: AngularFirestore,
+    private sesion_actual: Storage,
   ) { }
   
 
@@ -20,7 +22,9 @@ export class FirebaseLoginService {
   }
   logout(){
     return this.fireAuth.signOut().then(()=>{
-      this.router.navigate(['/pre-login']);
+      this.sesion_actual.create();
+      this.sesion_actual.set('sesion', 'loggedOut');
+      this.router.navigate(['/pre-inicio']);
     });
   }
 }

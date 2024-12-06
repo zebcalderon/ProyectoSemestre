@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-inicio',
@@ -17,10 +18,24 @@ export class InicioPage implements OnInit {
   tmb: number | null = null;
 
   constructor(
-    private animationCtrl:AnimationController
+    private animationCtrl:AnimationController, 
+    private storage:Storage,
   ) { }
+  
+  calorias: number;
 
   ngOnInit() {
+
+    this.storage.get('tmb').then((calorias) => {
+      console.log('Retrieved calorias:', calorias); // Debug log
+      this.calorias = calorias || 0;
+    }).catch((error) => {
+      console.error('Error retrieving calorias:', error);
+      this.calorias = 0;
+    });
+
+  
+    
     const enterAnimation = (baseEl: HTMLElement) => {
       const root = baseEl.shadowRoot;
       if (!root) {
@@ -67,6 +82,8 @@ export class InicioPage implements OnInit {
       modal.enterAnimation = enterAnimation;
       modal.leaveAnimation = leaveAnimation;
     });
+
+
   }
 
   cancelar(){
@@ -106,7 +123,9 @@ export class InicioPage implements OnInit {
         default:
           break;
       }
-      alert(`Tu TMB es: ${this.tmb.toFixed(2)} kcal/día`)
+      alert(`Tu TMB es: ${this.tmb.toFixed(0)} kcal/día`)
+      this.storage.create();
+      this.storage.set('tmb', Math.floor(this.tmb));
     }
   }
 }

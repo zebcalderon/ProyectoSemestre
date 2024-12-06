@@ -5,8 +5,7 @@ import { FirebaseAuthenticationService } from 'src/app/servicios/firebase-authen
 interface UserProfile {
   uid: string;
   email: string;
-  nombre: string;
-  createdAt?: any;
+  username: string;
 }
 @Component({
   selector: 'app-perfil',
@@ -21,8 +20,8 @@ export class PerfilPage implements OnInit {
   async ngOnInit() {
     try {
       const profileData = await this.authService.getProfile() as UserProfile;
-      if (profileData && profileData.nombre) {
-        this.nombre = profileData.nombre;
+      if (profileData && profileData.username) {
+        this.nombre = profileData.username;
       }
     } catch (error) {
       console.error("Error fetching profile data:", error);
