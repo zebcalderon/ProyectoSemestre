@@ -15,7 +15,7 @@
         </button>
         
         <!-- Imagen de perfil que puede cambiar al tomar una foto -->
-        <ion-img *ngIf="photo; else defaultProfile" class="img-perfil" [src]="photo" alt="foto-perfil" (click)="takePhoto()" style="border-radius: 50px;"></ion-img>
+        <ion-img *ngIf="imagenPerfil; else defaultProfile" class="img-perfil" [src]="imagenPerfil" alt="foto-perfil" (click)="takePhoto()" style="border-radius: 50px;"></ion-img>
 
         <!-- Imagen por defecto si no se ha tomado ninguna foto -->
         <ng-template #defaultProfile>

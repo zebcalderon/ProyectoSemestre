@@ -12,7 +12,9 @@ interface UserProfile {
   uid: string;
   email: string;
   username: string;
+  urlPfp?: string; 
 }
+
 
 @Component({
   selector: 'app-perfil',
@@ -26,7 +28,9 @@ export class PerfilPage implements OnInit {
   urlFoto: string = ''; // URL de la foto subida a Firebase Storage
   uploadProgress: number = 0;
   uid: string = '';
-  
+  urlPfp: string = '';
+  imagenPerfil: string = '';
+
   constructor(
     private authService: FirebaseAuthenticationService, 
     private router: Router,
@@ -45,6 +49,7 @@ export class PerfilPage implements OnInit {
       if (profileData && profileData.username) {
         this.nombre = profileData.username;
       }
+      await this.cargarImagenPerfil();
     } catch (error) {
       console.error("Error fetching profile data:", error);
     }
@@ -96,26 +101,36 @@ export class PerfilPage implements OnInit {
       .toString(36)
       .substring(2, 8)}.jpg`;
 
-      const fileBlob = await this.makeBlob(this.urlFoto);
-      const uploadTask = this.storage.upload(fileName, fileBlob);
+      const fileBlob = await this.makeBlob(this.photo);
 
+      const uploadTask = this.storage.upload(fileName, fileBlob);
       uploadTask.percentageChanges().subscribe((progress) => {
-        this.uploadProgress = progress;
+        this.uploadProgress = progress; // Actualizar el progreso de carga
       });
+
       await uploadTask.snapshotChanges().toPromise();
 
       const downloadUrl = await this.storage.ref(fileName).getDownloadURL().toPromise();
       
+      if(!this.uid) {
+        const profileData: any = await this.authService.getProfile();
+        this.uid = profileData.uid;
+      }
+
       if (this.uid) {
         const userRef = this.firestore.collection('usuarios').doc(this.uid);
         await userRef.set({ urlPfp: downloadUrl }, { merge: true });
         console.log('URL de la foto guardada en Firestore:', downloadUrl);
+        this.imagenPerfil = downloadUrl;
+      } else {
+        console.error('No se pudo obtener el ID del usuario.');
+        await this.showToast('Error al subir la imagen.');
       }
 
-      const userId = await this.authService.getProfile()
-      .then((profileData: any) => {
-        this.uid = profileData.uid;
-      });
+      // const userId = await this.authService.getProfile()
+      // .then((profileData: any) => {
+      //   this.uid = profileData.uid;
+      // });
 
       await this.showToast('Imagen subida con éxito.');
       console.log('URL de descarga:', downloadUrl);
@@ -124,6 +139,33 @@ export class PerfilPage implements OnInit {
       await this.showToast('Error al subir la imagen.');
     } finally {
       await loading.dismiss();
+    }
+  }
+
+  async cargarImagenPerfil() {
+    try {
+      if(!this.uid) {
+        const profileData: any = await this.authService.getProfile();
+        this.uid = profileData.uid;
+      }
+
+      const userRef = this.firestore.collection('usuarios').doc(this.uid);
+      const userDoc = await userRef.get().toPromise();
+
+      if (userDoc.exists){
+        const userData = userDoc.data() as UserProfile;
+        if (userData?.urlPfp) {
+          this.imagenPerfil = userData.urlPfp;
+          console.log('URL de la foto de perfil:', this.imagenPerfil);
+        } else {
+          console.warn('No se encontró una imagen de perfil.');
+          this.imagenPerfil = 'ruta/a/imagen/predeterminada.png'; // Imagen predeterminada
+        }
+      } else {
+        console.warn('El documento del usuario no existe.');
+      }
+    } catch (error) {
+      console.error('Error al cargar la imagen de perfil:', error);
     }
   }
 
@@ -141,27 +183,4 @@ export class PerfilPage implements OnInit {
     });
     toast.present();
   }
-  // dataURLtoBlob(dataurl: any) {
-  //   var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-  //       bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-  //   while(n--){
-  //       u8arr[n] = bstr.charCodeAt(n);
-  //   }
-  //   return new Blob([u8arr], {type:mime});
-  // }
-
-  // async subirImagen(blob: any, imageData : any) {
-  //   // Subir la imagen a Firebase Storage
-  //   try {
-  //     const currentDate = Date.now();
-  //     const filePath = `perfiles/${currentDate}.${imageData.format}`;
-  //     const fileRef = ref(this.storage, filePath);
-  //     const task = await uploadBytes(fileRef, blob);
-  //     console.log('task: ', task);
-  //     const url = getDownloadURL(fileRef);
-  //     return url;
-  //   } catch(e) {
-  //     throw(e);
-  //   }    
-  // }
 }
