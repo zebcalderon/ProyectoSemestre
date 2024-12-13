@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
 import { IonModal } from '@ionic/angular';
+// import { doc, setDoc, getDoc, updateDoc, serverTimestamp } from '@angular/fire/firestore'; nosotros usamos AngularFirestore, por lo que no sirve
+// import { Auth, onAuthStateChanged } from '@angular/fire/auth'; tampoco ocupamos Auth, usamos AngularFireAuth y ya existe el servicio para ésto
 import { Storage } from '@ionic/storage-angular';
+import { FirebaseAuthenticationService } from 'src/app/servicios/firebase-authentication.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-inicio',
@@ -16,16 +20,34 @@ export class InicioPage implements OnInit {
   sexo: string = '';
   ejercicio: string = '';
   tmb: number | null = null;
-
-  constructor(
-    private animationCtrl:AnimationController, 
-    private storage:Storage,
-  ) { }
-  
+  uid: string | null = null;
   calorias: number;
 
-  ngOnInit() {
+  constructor(
+    private animationCtrl: AnimationController,
+    private firestore: AngularFirestore,
+    private auth: FirebaseAuthenticationService,
+    private storage:Storage,
+  ) {}
 
+  ngOnInit() {
+    // Detectar usuario autenticado
+    this.auth.getProfile()
+    .then((profileData: any) => {
+      if (profileData) {
+        this.uid = profileData.uid; // Asegúrate de que el perfil tiene un `uid`
+        console.log('Usuario autenticado:', this.uid);
+      } else {
+        console.log('No hay usuario autenticado');
+        this.uid = null;
+      }
+    })
+    .catch((error) => {
+      console.error('Error al obtener el perfil del usuario:', error);
+      this.uid = null;
+    });
+
+    this
     this.storage.get('tmb').then((calorias) => {
       console.log('Retrieved calorias:', calorias); // Debug log
       this.calorias = calorias || 0;
@@ -33,66 +55,15 @@ export class InicioPage implements OnInit {
       console.error('Error retrieving calorias:', error);
       this.calorias = 0;
     });
-
-  
-    
-    const enterAnimation = (baseEl: HTMLElement) => {
-      const root = baseEl.shadowRoot;
-      if (!root) {
-        console.error('No se encontró');
-        return this.animationCtrl.create();
-      }
-      const backdrop = root.querySelector('ion-backdrop');
-      const wrapper = root.querySelector('.modal-wrapper');
-
-      if(!backdrop || !wrapper){
-        console.error('No se encontraron los elementos');
-        return this.animationCtrl.create();
-      }
-
-      const backdropAnimation = this.animationCtrl
-      .create()
-      .addElement(backdrop)
-      .fromTo('opacity', '0.91', 'var(--backdrop-opacity)');
-
-      const wrapperAnimation = this.animationCtrl
-      .create()
-      .addElement(wrapper)
-      .keyframes([
-        { offset: 0, opacity: '0',    transform: 'scale(0)' },
-        { offset: 1, opacity: '0.99', transform: 'scale(1)' }
-      ]);
-      
-      return this.animationCtrl
-      .create()
-      .addElement(baseEl)
-      .easing('ease-out')
-      .duration(500)
-      .addAnimation([backdropAnimation, wrapperAnimation]);
-    };
-    const leaveAnimation = (baseEl: HTMLElement) => {
-      return enterAnimation(baseEl).direction('reverse');
-    };
-
-    const modals = [
-      this.modalContador
-    ];
-
-    modals.forEach(modal => {
-      modal.enterAnimation = enterAnimation;
-      modal.leaveAnimation = leaveAnimation;
-    });
-
-
   }
 
   cancelar(){
-   if(this.modalContador){
-     this.modalContador.dismiss(null, 'cancelar');
+    if(this.modalContador){
+      this.modalContador.dismiss(null, 'cancelar');
+    }
    }
-  }
 
-  calcularTMB(){
+  async calcularTMB() {
     const peso = this.peso ?? 0;
     const altura = this.altura ?? 0;
     const edad = this.edad ?? 0;
@@ -101,11 +72,12 @@ export class InicioPage implements OnInit {
       alert('Por favor, completa todos los campos correctamente.');
       return;
     }
+
     if (this.sexo === 'Hombre') {
       this.tmb = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * edad);
     } else if (this.sexo === 'Mujer') {
       this.tmb = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad);
-    } 
+    }
 
     if (this.tmb !== null) {
       switch (this.ejercicio) {
@@ -115,17 +87,52 @@ export class InicioPage implements OnInit {
         case 'moderada':
           this.tmb *= 1.55;
           break;
-        case 'intensa' :
+        case 'intensa':
           this.tmb *= 1.725;
           break;
-        case 'nada' : 
+        case 'nada':
           break;
         default:
           break;
       }
-      alert(`Tu TMB es: ${this.tmb.toFixed(0)} kcal/día`)
-      this.storage.create();
-      this.storage.set('tmb', Math.floor(this.tmb));
+
+      alert(`Tu TMB es: ${this.tmb.toFixed(0)} kcal/día`);
+
+      // Guardar TMB en Firestore
+      if (this.uid) {
+        // const userDocRef = doc(this.firestore, `users/${this.uid}`);
+        const userDocRef = this.firestore.collection('users').doc(this.uid);
+
+        try {
+          // Comprobar si ya existe un documento
+          // const userDoc = await getDoc(userDocRef);
+          const userDoc = await userDocRef.get().toPromise();
+
+          if (userDoc.exists) {
+            // Actualizar el documento si existe
+            await userDocRef.update({
+              tmb: Math.floor(this.tmb),
+              updatedAt: new Date(), // AngularFirestore usa Date directamente
+            });
+          } else {
+            // Crear un nuevo documento si no existe
+            await userDocRef.set({
+              tmb: Math.floor(this.tmb),
+              createdAt: new Date(),
+              updatedAt: new Date(),
+            });
+          }
+
+          console.log('TMB guardado exitosamente en Firestore.');
+          this.storage.create();
+          this.storage.set('tmb', Math.floor(this.tmb));
+        } catch (error) {
+          console.error('Error al guardar el TMB en Firestore:', error);
+        }
+      } else {
+        alert('No se encontró usuario autenticado. Inicia sesión para guardar tu TMB.');
+      }
     }
   }
 }
+
