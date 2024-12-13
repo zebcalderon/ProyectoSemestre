@@ -39,25 +39,25 @@ export class InicioPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    // Detectar usuario autenticado
+    //usuario 
     this.auth.getProfile()
       .then((profileData: any) => {
         if (profileData) {
           this.uid = profileData.uid;
           console.log('Usuario autenticado:', this.uid);
 
-          // Limpiar datos locales al cambiar de usuario
+          // Limpiar datos
           this.calorias = 0;
           this.fechaCalculo = null;
 
-          // Recuperar datos del usuario desde Firestore
+          // Buscar los datos
           const userDocRef = this.firestore.collection('usuarios').doc(this.uid);
           userDocRef.get().toPromise().then((doc) => {
             if (doc.exists) {
               const userData = doc.data() as UserData;
               this.calorias = userData?.tmb || 0;
 
-              // Convertir la fecha de Firestore a formato legible
+              // Convertir la fecha 
               const fechaFirestore = userData?.updatedAt?.toDate();
               this.fechaCalculo = fechaFirestore
                 ? new Date(fechaFirestore).toLocaleDateString('es-CL', {
@@ -77,7 +77,7 @@ export class InicioPage implements OnInit {
           console.log('No hay usuario autenticado');
           this.uid = null;
 
-          // Limpiar datos si no hay usuario autenticado
+          // Limpiar datos 
           this.calorias = 0;
           this.fechaCalculo = null;
         }
@@ -91,7 +91,7 @@ export class InicioPage implements OnInit {
         this.fechaCalculo = null;
       });
 
-    // Recuperar calorías del almacenamiento local
+    // Calorías guardadas anteriormemte
       this.storage.create();
       this.storage.get('tmb').then((calorias) => {
         this.calorias = calorias || 0;
