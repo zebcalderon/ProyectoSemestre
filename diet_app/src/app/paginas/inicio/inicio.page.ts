@@ -10,7 +10,6 @@ interface UserData {
   updatedAt?: { toDate: () => Date };
 }
 
-
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -35,8 +34,6 @@ export class InicioPage implements OnInit {
     private storage: Storage
   ) {}
 
-  
-
   ngOnInit() {
     // Detectar usuario autenticado
     this.auth.getProfile()
@@ -45,9 +42,13 @@ export class InicioPage implements OnInit {
           this.uid = profileData.uid;
           console.log('Usuario autenticado:', this.uid);
 
+          // Limpiar datos locales al cambiar de usuario
+          this.calorias = 0;
+          this.fechaCalculo = null;
+
           // Recuperar datos del usuario desde Firestore
           const userDocRef = this.firestore.collection('users').doc(this.uid);
-          this.firestore.collection('users').doc(this.uid).get().toPromise().then((doc) => {
+          userDocRef.get().toPromise().then((doc) => {
             if (doc.exists) {
               const userData = doc.data() as UserData;
               this.calorias = userData?.tmb || 0;
@@ -62,6 +63,8 @@ export class InicioPage implements OnInit {
                     day: 'numeric',
                   })
                 : null;
+            } else {
+              console.log('No se encontraron datos para este usuario en Firestore.');
             }
           }).catch((error) => {
             console.error('Error al recuperar datos del usuario:', error);
@@ -69,11 +72,19 @@ export class InicioPage implements OnInit {
         } else {
           console.log('No hay usuario autenticado');
           this.uid = null;
+
+          // Limpiar datos si no hay usuario autenticado
+          this.calorias = 0;
+          this.fechaCalculo = null;
         }
       })
       .catch((error) => {
         console.error('Error al obtener el perfil del usuario:', error);
         this.uid = null;
+
+        // Limpiar datos en caso de error
+        this.calorias = 0;
+        this.fechaCalculo = null;
       });
 
     // Recuperar calorías del almacenamiento local
@@ -90,8 +101,6 @@ export class InicioPage implements OnInit {
       this.modalContador.dismiss(null, 'cancelar');
     }
   }
-
-  
 
   async calcularTMB() {
     const peso = this.peso ?? 0;
