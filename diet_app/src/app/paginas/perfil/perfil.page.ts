@@ -20,7 +20,9 @@ export class PerfilPage implements OnInit {
   photo: string | undefined; // Foto tomada por la cámara
   photoFileName: string = ''; // Nombre del archivo de la foto (opcional)
 
-  constructor(private authService: FirebaseAuthenticationService, private router: Router) { }
+  constructor(
+    private authService: FirebaseAuthenticationService, 
+    private router: Router) { }
 
   async ngOnInit() {
     try {

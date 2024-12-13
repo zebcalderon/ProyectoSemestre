@@ -47,7 +47,7 @@ export class InicioPage implements OnInit {
           this.fechaCalculo = null;
 
           // Recuperar datos del usuario desde Firestore
-          const userDocRef = this.firestore.collection('users').doc(this.uid);
+          const userDocRef = this.firestore.collection('usuarios').doc(this.uid);
           userDocRef.get().toPromise().then((doc) => {
             if (doc.exists) {
               const userData = doc.data() as UserData;
@@ -140,7 +140,7 @@ export class InicioPage implements OnInit {
       alert(`Tu TMB es: ${this.tmb.toFixed(0)} kcal/día`);
 
       if (this.uid) {
-        const userDocRef = this.firestore.collection('users').doc(this.uid);
+        const userDocRef = this.firestore.collection('usuarios').doc(this.uid);
 
         try {
           const userDoc = await userDocRef.get().toPromise();

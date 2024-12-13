@@ -17,8 +17,9 @@ export class FirebaseAuthenticationService {
       // Fetch the user's profile from Firestore using the user's UID
       const userDoc = await this.firestore.collection('usuarios').doc(currentUser.uid).get().toPromise();
       return userDoc.data();
+    } else {
+      return null;
     }
-    return null;
   }
 
   async resetPassword(email:string){
