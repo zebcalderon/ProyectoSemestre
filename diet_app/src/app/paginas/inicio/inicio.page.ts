@@ -91,6 +91,8 @@ export class InicioPage implements OnInit {
     }
   }
 
+  
+
   async calcularTMB() {
     const peso = this.peso ?? 0;
     const altura = this.altura ?? 0;
