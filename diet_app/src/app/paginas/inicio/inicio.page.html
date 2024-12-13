@@ -1,7 +1,5 @@
 <ion-header>
-  <!-- <ion-toolbar>
-    <ion-title>DietApp</ion-title>
-  </ion-toolbar> -->
+  <!-- Encabezado del modal (opcional, según diseño) -->
 </ion-header>
 
 <ion-content>
@@ -10,33 +8,31 @@
     <ion-row>
       <div class="center-container-hor">
         <ion-button id="open-modal" class="boton_cc" fill="outline" shape="round" expand="block" style="width: 200px;" color="danger">
-          Contador de Calorias
+          Contador de Calorías
         </ion-button> 
       </div>
     </ion-row>
     <br>
   </div>
-  
 
-
-    
-
+  <!-- Modal para calcular TMB -->
   <ion-modal #modalContador trigger="open-modal">
     <ng-template>
       <div>
         <div>
           <ion-toolbar>
             <ion-title>Contador</ion-title>
-            <ion-buttons slot="end" (click)="cancelar()" class="boton_cancelar" fill="clear">
-              Cancelar
+            <ion-buttons slot="end">
+              <ion-button (click)="cancelar()" class="boton_cancelar" fill="clear">Cancelar</ion-button>
             </ion-buttons>
           </ion-toolbar>
-          
         </div>
       </div>
+
       <ion-header>
-        
+        <!-- Encabezado adicional (opcional) -->
       </ion-header>
+
       <ion-content>
         <ion-input [(ngModel)]="edad" type="number" placeholder="Edad" fill="solid" maxlength="2" class="boton"></ion-input>
         <br>
@@ -56,7 +52,7 @@
         <ion-list>
           <ion-item expand="block" style="color: orange;">
             <ion-select placeholder="Ejercicio" [(ngModel)]="ejercicio">
-              <ion-select-option value='nada'>Nada de actividad</ion-select-option>
+              <ion-select-option value="nada">Nada de actividad</ion-select-option>
               <ion-select-option value="ligera">Actividad ligera (1-3 días a la semana)</ion-select-option>
               <ion-select-option value="moderada">Actividad moderada (3-5 días a la semana)</ion-select-option>
               <ion-select-option value="intensa">Actividad muy intensa (6-7 días a la semana)</ion-select-option>
@@ -69,10 +65,11 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-  <h5>Calorias diarias recomendadas: {{ calorias }}</h5>
 
-  
+  <!-- Mostrar las calorías recomendadas -->
+  <h5>Calorías diarias recomendadas: {{ calorias }}</h5>
+  <h5>Fecha del cálculo: {{ fechaCalculo }}</h5>
 </ion-content>
 
-<!-- <app-barra> </app-barra> -->
+<!-- Footer de la página -->
 <app-footer></app-footer>
