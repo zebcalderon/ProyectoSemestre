@@ -54,6 +54,8 @@ export class ConfiguracionPage implements OnInit {
     try {
       this.authService.logout();
       console.log("Usuario correctamente deslogueado");
+      this.sesion_actual.create();
+      this.sesion_actual.set('tmb', 0);
     } catch (error) {
       console.error("Error al intentar desloguear:", error);
     }
