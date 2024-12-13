@@ -35,6 +35,10 @@ export class InicioPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    
+  }
+
+  ionViewDidEnter() {
     // Detectar usuario autenticado
     this.auth.getProfile()
       .then((profileData: any) => {
@@ -88,12 +92,13 @@ export class InicioPage implements OnInit {
       });
 
     // Recuperar calorías del almacenamiento local
-    this.storage.get('tmb').then((calorias) => {
-      this.calorias = calorias || 0;
-    }).catch((error) => {
-      console.error('Error al recuperar calorías:', error);
-      this.calorias = 0;
-    });
+      this.storage.create();
+      this.storage.get('tmb').then((calorias) => {
+        this.calorias = calorias || 0;
+      }).catch((error) => {
+        console.error('Error al recuperar calorías:', error);
+        this.calorias = 0;
+      });
   }
 
   cancelar() {
